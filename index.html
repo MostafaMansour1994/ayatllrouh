@@ -237,6 +237,112 @@
 <body class="bg-gray-50 min-h-screen">
 
 
+    <!-- Sidebar Menu Button -->
+    <button id="menuToggle" class="fixed top-4 right-4 z-50 bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+        <svg id="menuIcon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-slate-800 to-slate-900 text-white transform translate-x-full transition-transform duration-300 z-50 shadow-2xl">
+        <div class="p-6">
+            <!-- Sidebar Header -->
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">القائمة الرئيسية</h2>
+                <button id="closeSidebar" class="text-gray-400 hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Sidebar Menu Items -->
+            <div class="space-y-3">
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('moods')">
+                    <span class="font-semibold">💭 المشاعر والحالات النفسية</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('divine')">
+                    <span class="font-semibold">📜 رسائل ربانية مختارة</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('prayers')">
+                    <span class="font-semibold">🤲 أدعية وأذكار مختارة</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('chosen')">
+                    <span class="font-semibold">⭐ لماذا اختارك الله؟</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('hadith')">
+                    <span class="font-semibold">📚 أحاديث نبوية مختارة</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('wisdom')">
+                    <span class="font-semibold">🌟 حكم وعبر إسلامية</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('quranKareem')">
+                    <span class="font-semibold">📖 القرآن الكريم كاملاً</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('quran')">
+                    <span class="font-semibold">📚 معلومات قرآنية مفيدة</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-700 hover:to-amber-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('shamela')">
+                    <span class="font-semibold">📚 المكتبة الشاملة</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-slate-600 to-gray-600 hover:from-slate-700 hover:to-gray-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('fatawa')">
+                    <span class="font-semibold">⚖️ الفتاوى الإسلامية</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Sidebar Footer -->
+            <div class="mt-8 pt-6 border-t border-gray-600">
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 mb-2">🌙 آيات للروح</p>
+                    <p class="text-xs text-gray-500">تطبيق إسلامي شامل</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <div class="header-gradient text-white p-6 rounded-b-3xl shadow-lg relative overflow-hidden">
         <div class="floating-particles">
@@ -259,7 +365,7 @@
     <div class="container mx-auto px-4 py-6 max-w-md">
         <!-- Tabs -->
         <div class="grid grid-cols-2 gap-3 mb-6">
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 active bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('moods')">
+            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('moods')">
                 💭 المشاعر
             </button>
             <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('divine')">
@@ -291,10 +397,24 @@
             </button>
         </div>
 
-
+        <!-- Welcome Message -->
+        <div id="welcomeMessage" class="mb-8">
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-lg border border-blue-100 text-center">
+                <div class="text-6xl mb-4">🌙</div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">مرحباً بك في آيات للروح</h2>
+                <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+                    اختر القسم الذي يناسب حالتك أو ما تريد قراءته
+                </p>
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <p class="text-gray-700 text-sm">
+                        ✨ آيات قرآنية وأدعية وأحاديث مختارة لكل حالة نفسية ✨
+                    </p>
+                </div>
+            </div>
+        </div>
 
         <!-- Moods Tab -->
-        <div id="moodsTab" class="tab-content">
+        <div id="moodsTab" class="tab-content hidden">
             <div class="mb-8">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">اختر حالتك النفسية</h2>
                 <div class="grid grid-cols-2 gap-3">
@@ -641,9 +761,12 @@
                     <p><strong>استمتع بالمحتوى:</strong> واضغط "اظهر المزيد" للمزيد</p>
                 </div>
             </div>
-            <div class="mt-3 text-center">
+            <div class="mt-3 text-center space-y-2">
                 <p class="text-xs text-gray-500 bg-white rounded-full px-3 py-1 inline-block">
                     💡 نصيحة: جرب الأقسام المختلفة لتجد ما يناسب حالتك
+                </p>
+                <p class="text-xs text-blue-600 bg-blue-50 rounded-full px-3 py-1 inline-block border border-blue-200">
+                    ♿ التطبيق متوافق مع قارئات الشاشة للمكفوفين وضعاف البصر
                 </p>
             </div>
         </div>
@@ -660,7 +783,10 @@
             </div>
             <div class="relative z-10">
                 <div class="text-6xl mb-4">🕊️</div>
-                <h3 class="text-white text-xl font-bold mb-4">صدقة جارية على روح أبي الكريم</h3>
+                <h3 class="text-white text-xl font-bold mb-4">صدقة جارية على روح أبي الغالي</h3>
+                <div class="text-center mb-4">
+                    <p class="text-white text-lg font-semibold bg-white bg-opacity-20 rounded-lg px-4 py-2 inline-block">إبراهيم منصور موسى</p>
+                </div>
                 <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
                     <p class="text-white text-lg leading-relaxed font-semibold mb-3">
                         اللهم اغفر لأبي وارحمه، وأدخله فسيح جناتك، واجعل هذا العمل الصالح 
@@ -1498,8 +1624,29 @@
                 btn.classList.remove('active');
             });
             
-            // Add active class to clicked tab
-            event.target.classList.add('active');
+            // Find and activate the correct tab button
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => {
+                const btnText = btn.textContent.trim();
+                if ((tabName === 'moods' && btnText.includes('المشاعر')) ||
+                    (tabName === 'divine' && btnText.includes('رسائل ربانية')) ||
+                    (tabName === 'prayers' && btnText.includes('أدعية')) ||
+                    (tabName === 'chosen' && btnText.includes('لماذا اختارك الله')) ||
+                    (tabName === 'hadith' && btnText.includes('أحاديث مختارة')) ||
+                    (tabName === 'wisdom' && btnText.includes('حكم وعبر')) ||
+                    (tabName === 'quranKareem' && btnText.includes('القرآن الكريم')) ||
+                    (tabName === 'quran' && btnText.includes('معلومات قرآنية')) ||
+                    (tabName === 'shamela' && btnText.includes('المكتبة الشاملة')) ||
+                    (tabName === 'fatawa' && btnText.includes('الفتاوى الإسلامية'))) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Hide welcome message when any tab is selected
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (welcomeMessage) {
+                welcomeMessage.classList.add('hidden');
+            }
             
             // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(content => {
@@ -1507,7 +1654,10 @@
             });
             
             // Show selected tab content
-            document.getElementById(tabName + 'Tab').classList.remove('hidden');
+            const targetTab = document.getElementById(tabName + 'Tab');
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+            }
             
             // Hide content container when switching tabs
             document.getElementById('contentContainer').classList.add('hidden');
@@ -1995,9 +2145,126 @@
             }, 3000);
         }
 
+        // Sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            const isOpen = !sidebar.classList.contains('translate-x-full');
+            
+            if (isOpen) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        }
+
+        function openSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+            
+            // Change menu icon to X
+            menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            menuIcon.classList.add('rotate-90');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+            
+            // Change X back to menu icon
+            menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            menuIcon.classList.remove('rotate-90');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        function showTabFromSidebar(tabName) {
+            // Close sidebar first
+            closeSidebar();
+            
+            // Wait for sidebar to close, then show tab
+            setTimeout(() => {
+                showTab(tabName);
+                
+                // Scroll to tabs section
+                const tabsSection = document.querySelector('.container');
+                if (tabsSection) {
+                    tabsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 300);
+        }
+
+        // Initialize sidebar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            setupSidebar();
+        });
+
+        // Also initialize immediately in case DOM is already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupSidebar);
+        } else {
+            setupSidebar();
+        }
+
+        function setupSidebar() {
+            const menuToggle = document.getElementById('menuToggle');
+            const closeSidebarBtn = document.getElementById('closeSidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            
+            // Menu toggle button - direct onclick
+            if (menuToggle) {
+                menuToggle.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleSidebar();
+                };
+            }
+            
+            // Close sidebar button - direct onclick
+            if (closeSidebarBtn) {
+                closeSidebarBtn.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeSidebar();
+                };
+            }
+            
+            // Close sidebar when clicking overlay - direct onclick
+            if (sidebarOverlay) {
+                sidebarOverlay.onclick = function(e) {
+                    e.preventDefault();
+                    closeSidebar();
+                };
+            }
+            
+            // Close sidebar on escape key
+            document.onkeydown = function(e) {
+                if (e.key === 'Escape' || e.keyCode === 27) {
+                    const sidebar = document.getElementById('sidebar');
+                    if (sidebar && !sidebar.classList.contains('translate-x-full')) {
+                        closeSidebar();
+                    }
+                }
+            };
+        }
+
 
 
 
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c1b61d22c32115',t:'MTc1NDY4NDM5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c5649d43a5e5bf',t:'MTc1NDcyMzAwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
