@@ -10,97 +10,79 @@
         
         body {
             font-family: 'Amiri', serif;
-            background: linear-gradient(45deg, #f0f2f5, #e8f4fd, #f0f2f5);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
         
         .verse-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15), 0 5px 15px rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 25px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.15),
+                0 10px 20px rgba(102, 126, 234, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2);
             transform: translateY(0);
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .verse-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .verse-card:hover::before {
-            left: 100%;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
         }
         
         .verse-card.show {
-            animation: slideUp 0.8s ease-out;
+            animation: slideUp 0.6s ease-out;
         }
         
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px) scale(0.95);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
         
         .mood-btn {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            border-radius: 15px;
-            transition: all 0.4s ease;
-            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .mood-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .mood-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            background: linear-gradient(135deg, #f5f5dc 0%, #f0e68c 50%, #deb887 100%);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 8px 25px rgba(245, 245, 220, 0.3),
+                0 4px 10px rgba(240, 230, 140, 0.2),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            color: #000000;
         }
         
         .mood-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(79, 172, 254, 0.5);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 15px 35px rgba(245, 245, 220, 0.4),
+                0 8px 15px rgba(240, 230, 140, 0.3),
+                inset 0 1px 0 rgba(255,255,255,0.4);
         }
         
         .mood-btn.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transform: scale(0.98);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        .header-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scale(0.95);
         }
         
         .divine-btn {
@@ -116,15 +98,16 @@
         }
         
         .prayer-btn {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(135deg, #f5f5dc 0%, #f0e68c 100%);
             border-radius: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(168, 237, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(245, 245, 220, 0.3);
+            color: #000000;
         }
         
         .prayer-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(245, 245, 220, 0.4);
         }
         
         .prayer-btn.active {
@@ -176,6 +159,8 @@
         .tab-btn.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
         
         .typing-animation {
@@ -205,14 +190,20 @@
         
         .particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             animation: float 6s ease-in-out infinite;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0; 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg); 
+                opacity: 1; 
+            }
         }
         
         .developer-name {
@@ -224,7 +215,6 @@
             animation: gradientText 3s ease infinite;
             font-weight: bold;
             font-size: 1.5rem;
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
         }
         
         @keyframes gradientText {
@@ -235,7 +225,6 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
-
 
     <!-- Sidebar Menu Button -->
     <button id="menuToggle" class="fixed top-4 right-4 z-50 bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
@@ -331,6 +320,20 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('khatma')">
+                    <span class="font-semibold">📖 ختمة أونلاين</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+
+                <button class="sidebar-item w-full text-right p-4 rounded-xl bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-between group" onclick="showTabFromSidebar('qibla')">
+                    <span class="font-semibold">🕋 القبلة ومواقيت الصلاة</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
             </div>
 
             <!-- Sidebar Footer -->
@@ -344,7 +347,7 @@
     </div>
 
     <!-- Header -->
-    <div class="header-gradient text-white p-6 rounded-b-3xl shadow-lg relative overflow-hidden">
+    <div class="bg-gradient-to-r from-purple-600 via-blue-600 to-pink-500 text-white p-8 rounded-b-[2rem] shadow-2xl relative overflow-hidden border-b border-white/10" style="box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 10px 20px rgba(102, 126, 234, 0.2); backdrop-filter: blur(10px);">
         <div class="floating-particles">
             <div class="particle" style="left: 10%; animation-delay: 0s; width: 4px; height: 4px;"></div>
             <div class="particle" style="left: 20%; animation-delay: 1s; width: 6px; height: 6px;"></div>
@@ -364,49 +367,55 @@
 
     <div class="container mx-auto px-4 py-6 max-w-md">
         <!-- Tabs -->
-        <div class="grid grid-cols-2 gap-3 mb-6">
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('moods')">
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('moods')">
                 💭 المشاعر
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('divine')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('divine')">
                 📜 رسائل ربانية
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('prayers')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('prayers')">
                 🤲 أدعية
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('chosen')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('chosen')">
                 ⭐ لماذا اختارك الله
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('hadith')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('hadith')">
                 📚 أحاديث مختارة
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('wisdom')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('wisdom')">
                 🌟 حكم وعبر
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('quranKareem')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('quranKareem')">
                 📖 القرآن الكريم
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('quran')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('quran')">
                 📚 معلومات قرآنية
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('shamela')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('shamela')">
                 📚 المكتبة الشاملة
             </button>
-            <button class="tab-btn py-4 px-3 rounded-xl font-bold text-gray-600 bg-white shadow-lg transition-all duration-300 hover:shadow-xl" onclick="showTab('fatawa')">
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('fatawa')">
                 ⚖️ الفتاوى الإسلامية
+            </button>
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('khatma')">
+                📖 ختمة أونلاين
+            </button>
+            <button class="tab-btn py-5 px-4 rounded-2xl font-bold text-gray-600 bg-white/90 backdrop-blur-sm shadow-xl transition-all duration-400 hover:shadow-2xl border border-white/20" style="box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(102, 126, 234, 0.1);" onclick="showTab('qibla')">
+                🕋 القبلة والصلاة
             </button>
         </div>
 
         <!-- Welcome Message -->
-        <div id="welcomeMessage" class="mb-8">
-            <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-lg border border-blue-100 text-center">
-                <div class="text-6xl mb-4">🌙</div>
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">مرحباً بك في آيات للروح</h2>
-                <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+        <div id="welcomeMessage" class="mb-10">
+            <div class="bg-white/95 backdrop-blur-sm rounded-[2rem] p-10 shadow-2xl text-center border border-white/20" style="box-shadow: 0 25px 50px rgba(0,0,0,0.1), 0 10px 20px rgba(102, 126, 234, 0.1);">
+                <div class="text-7xl mb-8 animate-pulse">🌙</div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">مرحباً بك في آيات للروح</h2>
+                <p class="text-gray-600 text-xl mb-8 leading-relaxed">
                     اختر القسم الذي يناسب حالتك أو ما تريد قراءته
                 </p>
-                <div class="bg-white rounded-xl p-4 shadow-sm">
-                    <p class="text-gray-700 text-sm">
+                <div class="bg-gradient-to-r from-purple-100 via-blue-100 to-pink-100 rounded-2xl p-6 border border-purple-200/50">
+                    <p class="text-gray-700 font-bold text-lg">
                         ✨ آيات قرآنية وأدعية وأحاديث مختارة لكل حالة نفسية ✨
                     </p>
                 </div>
@@ -417,51 +426,126 @@
         <div id="moodsTab" class="tab-content hidden">
             <div class="mb-8">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">اختر حالتك النفسية</h2>
-                <div class="grid grid-cols-2 gap-3">
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('sadness')">
-                        😢 الحزن
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('sadness')">
+                        <span class="text-lg mb-1 block">😢</span>
+                        الحزن
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('confusion')">
-                        🤔 الحيرة
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('confusion')">
+                        <span class="text-lg mb-1 block">🤔</span>
+                        الحيرة
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('anxiety')">
-                        😰 القلق
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('anxiety')">
+                        <span class="text-lg mb-1 block">😰</span>
+                        القلق
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('gratitude')">
-                        🙏 الشكر
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('gratitude')">
+                        <span class="text-lg mb-1 block">🙏</span>
+                        الشكر
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('joy')">
-                        😊 الفرح
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('joy')">
+                        <span class="text-lg mb-1 block">😊</span>
+                        الفرح
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('hope')">
-                        ✨ الأمل
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('hope')">
+                        <span class="text-lg mb-1 block">✨</span>
+                        الأمل
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('guidance')">
-                        🧭 طلب الهداية
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('guidance')">
+                        <span class="text-lg mb-1 block">🧭</span>
+                        طلب الهداية
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('patience')">
-                        ⏳ الصبر
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('patience')">
+                        <span class="text-lg mb-1 block">⏳</span>
+                        الصبر
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('forgiveness')">
-                        💚 الاستغفار
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('forgiveness')">
+                        <span class="text-lg mb-1 block">💚</span>
+                        الاستغفار
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('fear')">
-                        😨 الخوف
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('fear')">
+                        <span class="text-lg mb-1 block">😨</span>
+                        الخوف
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('loneliness')">
-                        😔 الوحدة
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('loneliness')">
+                        <span class="text-lg mb-1 block">😔</span>
+                        الوحدة
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('anger')">
-                        😡 الغضب
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('anger')">
+                        <span class="text-lg mb-1 block">😡</span>
+                        الغضب
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('stress')">
-                        😫 الضغط
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('stress')">
+                        <span class="text-lg mb-1 block">😫</span>
+                        الضغط
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('love')">
-                        ❤️ الحب
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('love')">
+                        <span class="text-lg mb-1 block">❤️</span>
+                        الحب
                     </button>
-                    <button class="mood-btn text-white p-4 font-bold text-lg" onclick="selectMood('peace')">
-                        🕊️ السكينة
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('peace')">
+                        <span class="text-lg mb-1 block">🕊️</span>
+                        السكينة
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('depression')">
+                        <span class="text-lg mb-1 block">😞</span>
+                        الاكتئاب
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('jealousy')">
+                        <span class="text-lg mb-1 block">😒</span>
+                        الحسد والغيرة
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('guilt')">
+                        <span class="text-lg mb-1 block">😔</span>
+                        الشعور بالذنب
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('weakness')">
+                        <span class="text-lg mb-1 block">😪</span>
+                        الضعف
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('betrayal')">
+                        <span class="text-lg mb-1 block">💔</span>
+                        الخيانة
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('failure')">
+                        <span class="text-lg mb-1 block">😓</span>
+                        الفشل
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('injustice')">
+                        <span class="text-lg mb-1 block">⚖️</span>
+                        الظلم
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('poverty')">
+                        <span class="text-lg mb-1 block">💸</span>
+                        ضيق الرزق
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('illness')">
+                        <span class="text-lg mb-1 block">🤒</span>
+                        المرض
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('death')">
+                        <span class="text-lg mb-1 block">🥀</span>
+                        فقدان عزيز
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('marriage')">
+                        <span class="text-lg mb-1 block">💍</span>
+                        الزواج
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('children')">
+                        <span class="text-lg mb-1 block">👶</span>
+                        الأطفال
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('work')">
+                        <span class="text-lg mb-1 block">💼</span>
+                        العمل
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('study')">
+                        <span class="text-lg mb-1 block">📚</span>
+                        الدراسة
+                    </button>
+                    <button class="bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 text-black p-3 font-bold text-sm shadow-xl rounded-2xl transition-all duration-300 hover:scale-105" onclick="selectMood('success')">
+                        <span class="text-lg mb-1 block">🏆</span>
+                        النجاح
                     </button>
                 </div>
             </div>
@@ -662,6 +746,176 @@
             </div>
         </div>
 
+        <!-- Khatma Online Tab -->
+        <div id="khatmaTab" class="tab-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">📖 ختمة أونلاين</h2>
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 shadow-lg border border-green-100 mb-6">
+                    <div class="text-center mb-4">
+                        <div class="text-6xl mb-3">📖</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">ختمة القرآن الكريم أونلاين</h3>
+                        <p class="text-gray-600 text-sm mb-4">اختتم القرآن الكريم مع المسلمين حول العالم</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg p-3 shadow-sm flex items-center">
+                            <span class="text-green-500 text-lg ml-3">✓</span>
+                            <span class="text-gray-700 text-sm">ختمة جماعية مع المسلمين</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 shadow-sm flex items-center">
+                            <span class="text-green-500 text-lg ml-3">✓</span>
+                            <span class="text-gray-700 text-sm">تتبع تقدمك في القراءة</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 shadow-sm flex items-center">
+                            <span class="text-green-500 text-lg ml-3">✓</span>
+                            <span class="text-gray-700 text-sm">إحصائيات وتقارير مفصلة</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 shadow-sm flex items-center">
+                            <span class="text-green-500 text-lg ml-3">✓</span>
+                            <span class="text-gray-700 text-sm">تذكيرات يومية للقراءة</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 shadow-sm flex items-center">
+                            <span class="text-green-500 text-lg ml-3">✓</span>
+                            <span class="text-gray-700 text-sm">مجاني ومتاح للجميع</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-6">
+                        <button onclick="openKhatma()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full">
+                            📖 ابدأ ختمة جديدة
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <p class="text-xs text-gray-500 bg-white rounded-full px-3 py-1 inline-block">
+                            💡 سيتم فتح الموقع في نافذة جديدة
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Qibla and Prayer Times Tab -->
+        <div id="qiblaTab" class="tab-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">🕋 القبلة ومواقيت الصلاة</h2>
+                
+                <!-- Qibla Direction Section -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 shadow-lg border border-green-100 mb-6">
+                    <div class="text-center mb-4">
+                        <div class="text-6xl mb-3">🕋</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">اتجاه القبلة</h3>
+                        <p class="text-gray-600 text-sm mb-4">تحديد اتجاه القبلة الشريفة من موقعك</p>
+                    </div>
+                    
+                    <div id="qiblaCompass" class="text-center mb-6">
+                        <div class="relative inline-block">
+                            <div id="compassCircle" class="w-48 h-48 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
+                                <div id="qiblaArrow" class="text-6xl text-white transform transition-transform duration-1000" style="transform: rotate(0deg);">
+                                    ⬆️
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p id="qiblaDirection" class="text-lg font-bold text-gray-800">اضغط لتحديد الاتجاه</p>
+                                <p id="qiblaDistance" class="text-sm text-gray-600 mt-1"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button onclick="findQibla()" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full mb-3">
+                            🧭 تحديد اتجاه القبلة
+                        </button>
+                        <p class="text-xs text-gray-500">
+                            💡 سيطلب التطبيق إذن الوصول للموقع لتحديد الاتجاه بدقة
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Prayer Times Section -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 shadow-lg border border-blue-100 mb-6">
+                    <div class="text-center mb-4">
+                        <div class="text-6xl mb-3">🕐</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">مواقيت الصلاة في مصر</h3>
+                        <p class="text-gray-600 text-sm mb-4" id="currentDate">اليوم: جاري التحميل...</p>
+                    </div>
+                    
+                    <div id="prayerTimes" class="space-y-3">
+                        <div class="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-2xl ml-3">🌅</span>
+                                <span class="font-bold text-gray-800">الفجر</span>
+                            </div>
+                            <span id="fajrTime" class="text-lg font-bold text-blue-600">--:--</span>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-2xl ml-3">🌄</span>
+                                <span class="font-bold text-gray-800">الشروق</span>
+                            </div>
+                            <span id="sunriseTime" class="text-lg font-bold text-orange-600">--:--</span>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-2xl ml-3">☀️</span>
+                                <span class="font-bold text-gray-800">الظهر</span>
+                            </div>
+                            <span id="dhuhrTime" class="text-lg font-bold text-yellow-600">--:--</span>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-2xl ml-3">🌤️</span>
+                                <span class="font-bold text-gray-800">العصر</span>
+                            </div>
+                            <span id="asrTime" class="text-lg font-bold text-amber-600">--:--</span>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-2xl ml-3">🌅</span>
+                                <span class="font-bold text-gray-800">المغرب</span>
+                            </div>
+                            <span id="maghribTime" class="text-lg font-bold text-red-600">--:--</span>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="text-2xl ml-3">🌙</span>
+                                <span class="font-bold text-gray-800">العشاء</span>
+                            </div>
+                            <span id="ishaTime" class="text-lg font-bold text-purple-600">--:--</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-6">
+                        <button onclick="updatePrayerTimes()" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full">
+                            🔄 تحديث المواقيت
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <p class="text-xs text-gray-500 bg-white rounded-full px-3 py-1 inline-block">
+                            📍 المواقيت محسوبة لتوقيت القاهرة، مصر
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Next Prayer Section -->
+                <div id="nextPrayerSection" class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg border border-purple-100">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">⏰</div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">الصلاة القادمة</h3>
+                        <p id="nextPrayerName" class="text-xl font-bold text-purple-600 mb-2">--</p>
+                        <p id="nextPrayerTime" class="text-lg text-gray-700 mb-2">--:--</p>
+                        <p id="timeRemaining" class="text-sm text-gray-600">--</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Prayers Tab -->
         <div id="prayersTab" class="tab-content hidden">
             <div class="mb-8">
@@ -707,6 +961,14 @@
                     <p id="contentSource" class="text-sm opacity-80 text-center mt-3"></p>
                 </div>
                 
+                <div id="tafseerSection" class="bg-white bg-opacity-15 rounded-lg p-4 mb-4 hidden">
+                    <h4 class="text-white font-bold text-base mb-2 flex items-center">
+                        <span class="ml-2">📖</span>
+                        تفسير ابن كثير
+                    </h4>
+                    <p id="contentTafseer" class="text-sm leading-relaxed text-white opacity-90"></p>
+                </div>
+                
                 <div class="bg-white bg-opacity-10 rounded-lg p-4 mb-4">
                     <p id="contentAdvice" class="text-sm leading-relaxed"></p>
                 </div>
@@ -742,86 +1004,69 @@
         </div>
 
         <!-- Instructions -->
-        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-4 shadow-lg mb-6 border border-blue-100">
-            <h3 class="text-lg font-bold text-gray-800 mb-3 text-center flex items-center justify-center">
-                <span class="ml-2">📖</span>
+        <div class="bg-white rounded-3xl p-6 shadow-2xl mb-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center flex items-center justify-center">
+                <span class="ml-3 text-2xl">📖</span>
                 كيفية الاستخدام
             </h3>
-            <div class="space-y-2 text-gray-700 text-sm">
-                <div class="flex items-start bg-white rounded-lg p-2 shadow-sm">
-                    <span class="text-lg ml-2 mt-0.5">1️⃣</span>
-                    <p><strong>اختر القسم:</strong> المشاعر، الأدعية، أو الرسائل الربانية</p>
+            <div class="space-y-3 text-gray-700">
+                <div class="flex items-start bg-gray-50 rounded-2xl p-4">
+                    <span class="text-2xl ml-3 mt-1">1️⃣</span>
+                    <p><strong class="text-blue-600">اختر القسم:</strong> المشاعر، الأدعية، أو الرسائل الربانية</p>
                 </div>
-                <div class="flex items-start bg-white rounded-lg p-2 shadow-sm">
-                    <span class="text-lg ml-2 mt-0.5">2️⃣</span>
-                    <p><strong>اضغط على الزر:</strong> حسب حالتك أو ما تريد قراءته</p>
+                <div class="flex items-start bg-gray-50 rounded-2xl p-4">
+                    <span class="text-2xl ml-3 mt-1">2️⃣</span>
+                    <p><strong class="text-purple-600">اضغط على الزر:</strong> حسب حالتك أو ما تريد قراءته</p>
                 </div>
-                <div class="flex items-start bg-white rounded-lg p-2 shadow-sm">
-                    <span class="text-lg ml-2 mt-0.5">3️⃣</span>
-                    <p><strong>استمتع بالمحتوى:</strong> واضغط "اظهر المزيد" للمزيد</p>
+                <div class="flex items-start bg-gray-50 rounded-2xl p-4">
+                    <span class="text-2xl ml-3 mt-1">3️⃣</span>
+                    <p><strong class="text-pink-600">استمتع بالمحتوى:</strong> واضغط "اظهر المزيد" للمزيد</p>
                 </div>
             </div>
-            <div class="mt-3 text-center space-y-2">
-                <p class="text-xs text-gray-500 bg-white rounded-full px-3 py-1 inline-block">
+            <div class="mt-6 text-center space-y-3">
+                <p class="text-sm text-gray-600 bg-yellow-100 rounded-full px-4 py-2 inline-block">
                     💡 نصيحة: جرب الأقسام المختلفة لتجد ما يناسب حالتك
                 </p>
-                <p class="text-xs text-blue-600 bg-blue-50 rounded-full px-3 py-1 inline-block border border-blue-200">
+                <p class="text-sm text-blue-700 bg-blue-100 rounded-full px-4 py-2 inline-block">
                     ♿ التطبيق متوافق مع قارئات الشاشة للمكفوفين وضعاف البصر
                 </p>
             </div>
         </div>
 
-
-
         <!-- Dedication to Father -->
-        <div class="bg-gradient-to-br from-amber-600 to-orange-700 rounded-2xl p-6 shadow-2xl text-center border border-amber-500 mb-6 relative overflow-hidden">
-            <div class="floating-particles">
-                <div class="particle" style="left: 25%; animation-delay: 0.5s; width: 4px; height: 4px; background: rgba(255,255,255,0.3);"></div>
-                <div class="particle" style="left: 45%; animation-delay: 1.5s; width: 3px; height: 3px; background: rgba(255,255,255,0.3);"></div>
-                <div class="particle" style="left: 65%; animation-delay: 0.8s; width: 5px; height: 5px; background: rgba(255,255,255,0.3);"></div>
-                <div class="particle" style="left: 85%; animation-delay: 2.2s; width: 3px; height: 3px; background: rgba(255,255,255,0.3);"></div>
+        <div class="bg-gradient-to-br from-amber-600 to-orange-700 rounded-2xl p-6 shadow-2xl text-center text-white mb-6">
+            <div class="text-6xl mb-4">🕊️</div>
+            <h3 class="text-xl font-bold mb-4">صدقة جارية على روح أبي الغالي</h3>
+            <div class="text-center mb-4">
+                <p class="text-lg font-semibold bg-white bg-opacity-20 rounded-lg px-4 py-2 inline-block">إبراهيم منصور موسى</p>
             </div>
-            <div class="relative z-10">
-                <div class="text-6xl mb-4">🕊️</div>
-                <h3 class="text-white text-xl font-bold mb-4">صدقة جارية على روح أبي الغالي</h3>
-                <div class="text-center mb-4">
-                    <p class="text-white text-lg font-semibold bg-white bg-opacity-20 rounded-lg px-4 py-2 inline-block">إبراهيم منصور موسى</p>
-                </div>
-                <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
-                    <p class="text-white text-lg leading-relaxed font-semibold mb-3">
-                        اللهم اغفر لأبي وارحمه، وأدخله فسيح جناتك، واجعل هذا العمل الصالح 
-                        في ميزان حسناته، وأنزل عليه الرحمة والمغفرة
-                    </p>
-                    <p class="text-white text-base leading-relaxed">
-                        "إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَمَلُهُ إِلاَّ مِنْ ثَلاَثٍ: صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ"
-                    </p>
-                    <p class="text-amber-100 text-sm mt-2">رواه مسلم</p>
-                </div>
-                <div class="bg-white bg-opacity-10 rounded-lg p-3">
-                    <p class="text-white text-sm">
-                        💫 كل من يستفيد من هذا التطبيق، فله أجر ولأبي الكريم مثل أجره 💫
-                    </p>
-                </div>
+            <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
+                <p class="text-lg leading-relaxed font-semibold mb-3">
+                    اللهم اغفر لأبي وارحمه، وأدخله فسيح جناتك، واجعل هذا العمل الصالح 
+                    في ميزان حسناته، وأنزل عليه الرحمة والمغفرة
+                </p>
+                <p class="text-base leading-relaxed">
+                    "إِذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَمَلُهُ إِلاَّ مِنْ ثَلاَثٍ: صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ"
+                </p>
+                <p class="text-amber-100 text-sm mt-2">رواه مسلم</p>
+            </div>
+            <div class="bg-white bg-opacity-10 rounded-lg p-3">
+                <p class="text-sm">
+                    💫 كل من يستفيد من هذا التطبيق، فله أجر ولأبي الحبيب مثل أجره 💫
+                </p>
             </div>
         </div>
 
         <!-- Footer -->
-        <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 shadow-2xl text-center border border-slate-700 relative overflow-hidden">
-            <div class="floating-particles">
-                <div class="particle" style="left: 15%; animation-delay: 0s; width: 3px; height: 3px;"></div>
-                <div class="particle" style="left: 35%; animation-delay: 1.5s; width: 4px; height: 4px;"></div>
-                <div class="particle" style="left: 55%; animation-delay: 0.8s; width: 3px; height: 3px;"></div>
-                <div class="particle" style="left: 75%; animation-delay: 2s; width: 5px; height: 5px;"></div>
-                <div class="particle" style="left: 85%; animation-delay: 1.2s; width: 3px; height: 3px;"></div>
+        <div class="bg-gradient-to-br from-slate-800 via-slate-900 to-purple-900 rounded-[2rem] p-10 shadow-2xl text-center text-white border border-white/10" style="box-shadow: 0 25px 50px rgba(0,0,0,0.2), 0 10px 20px rgba(102, 126, 234, 0.1);">
+            <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl p-8 mb-6 shadow-xl border border-white/20">
+                <p class="text-xl font-bold mb-3">إعداد وتطوير</p>
+                <p class="developer-name text-2xl">م/ مصطفى منصور</p>
+                <p class="text-base mt-3 opacity-90">أخصائي البرمجيات والذكاء الاصطناعي</p>
             </div>
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 mb-4 shadow-lg relative z-10">
-                <p class="text-white text-lg font-semibold mb-2">إعداد وتطوير</p>
-                <p class="developer-name">م/ مصطفى منصور</p>
-                <p class="text-white text-sm mt-2 opacity-90">أخصائي البرمجيات والذكاء الاصطناعي</p>
-            </div>
-            <p class="text-slate-300 text-base leading-relaxed relative z-10">نسأل الله التوفيق والسداد في القول والعمل، وأن يعيننا على استكمال هذا العمل الطيب، وأن يجعله خالصًا لوجهه الكريم، مباركًا في أثره، نافعًا للناس، سببًا في الخير، وبابًا من أبواب الرزق والبركة.</p>
-            <div class="mt-4 pt-4 border-t border-slate-700 relative z-10">
-                <p class="text-slate-400 text-sm">تطبيق آيات للروح</p>
+            <p class="text-slate-200 text-lg leading-relaxed mb-6">نسأل الله التوفيق والسداد في القول والعمل، وأن يعيننا على استكمال هذا العمل الطيب، وأن يجعله خالصًا لوجهه الكريم، مباركًا في أثره، نافعًا للناس، سببًا في الخير، وبابًا من أبواب الرزق والبركة.</p>
+            <div class="mt-6 pt-6 border-t border-slate-600/50">
+                <p class="text-slate-300 text-base font-semibold">تطبيق آيات للروح - الإصدار 35</p>
             </div>
         </div>
     </div>
@@ -832,17 +1077,202 @@
                 {
                     text: "وَبَشِّرِ الصَّابِرِينَ * الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",
                     source: "سورة البقرة: 155-156",
+                    tafseer: "يقول ابن كثير: يخبر الله تعالى أنه سيبتلي عباده بشيء من الخوف والجوع ونقص من الأموال والأنفس والثمرات، ثم يبشر الصابرين الذين إذا أصابتهم مصيبة قالوا: إنا لله وإنا إليه راجعون. أي: نحن ملك لله عز وجل، يتصرف فينا بما يشاء، وإليه مرجعنا ومآلنا.",
                     advice: "💡 تذكر أن الحزن جزء من الحياة، وأن الصبر عليه يؤجر عند الله. حاول أن تتحدث مع صديق مقرب أو تمارس نشاطاً تحبه لتخفيف الألم."
                 },
                 {
                     text: "وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ ۖ إِنَّهُ لَا يَيْأَسُ مِن رَّوْحِ اللَّهِ إِلَّا الْقَوْمُ الْكَافِرُونَ",
                     source: "سورة يوسف: 87",
+                    tafseer: "يقول ابن كثير: أي لا تقنطوا من رحمة الله وفرجه ونصره، فإن الله قريب من عباده المؤمنين، وإنما ييأس من رحمة الله القوم الكافرون الذين لا يؤمنون بقدرة الله على تغيير الأحوال وإزالة الشدائد.",
                     advice: "💡 اليأس ليس من صفات المؤمن. اكتب 3 أشياء إيجابية حدثت لك اليوم، مهما كانت صغيرة، واشكر الله عليها."
                 },
                 {
                     text: "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا * إِنَّ مَعَ الْعُسْرِ يُسْرًا",
                     source: "سورة الشرح: 5-6",
+                    tafseer: "يقول ابن كثير: هذا إخبار من الله عز وجل بأن مع العسر يسراً، ثم أكد هذا الخبر بإعادته، وفي إعادة ذكر هذا وتأكيده دلالة على تحقق وقوعه لا محالة. وقد قال بعض السلف: لن يغلب عسر يسرين.",
                     advice: "💡 كل صعوبة تمر بها ستنتهي وسيأتي الفرج. خذ نفساً عميقاً وتذكر المرات السابقة التي تجاوزت فيها الصعاب."
+                }
+            ],
+            depression: [
+                {
+                    text: "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ ۚ إِنَّ اللَّهَ بَالِغُ أَمْرِهِ ۚ قَدْ جَعَلَ اللَّهُ لِكُلِّ شَيْءٍ قَدْرًا",
+                    source: "سورة الطلاق: 3",
+                    tafseer: "يقول ابن كثير: أي من اعتمد على الله وفوض أمره إليه، فالله كافيه أمر دينه ودنياه، فإن الله بالغ أمره الذي قدره وقضاه، لا يقدر أحد على رده أو منعه، وقد جعل الله لكل شيء قدراً، أي وقتاً معلوماً ومقداراً مقدوراً لا يتجاوزه ولا يقصر عنه.",
+                    advice: "💡 الاكتئاب مرض يحتاج علاج. توكل على الله واطلب المساعدة المهنية. تذكر أن طلب العلاج ليس ضعفاً بل حكمة."
+                },
+                {
+                    text: "وَلَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا",
+                    source: "سورة الزمر: 53",
+                    tafseer: "يقول ابن كثير: هذا من كرم الله وجوده ورحمته بخلقه، مع كونهم قد أسرفوا على أنفسهم في المعاصي والذنوب، فإن الله يدعوهم إلى التوبة والإنابة، ويخبرهم أنه يغفر الذنوب جميعاً لمن تاب منها ورجع عنها، مهما كانت وإن كثرت وتنوعت.",
+                    advice: "💡 لا تفقد الأمل في رحمة الله. اطلب المساعدة من المختصين، ومارس الرياضة، واقض وقتاً في الطبيعة."
+                }
+            ],
+            jealousy: [
+                {
+                    text: "وَلَا تَتَمَنَّوْا مَا فَضَّلَ اللَّهُ بِهِ بَعْضَكُمْ عَلَىٰ بَعْضٍ",
+                    source: "سورة النساء: 32",
+                    advice: "💡 الحسد يأكل الحسنات كما تأكل النار الحطب. ركز على نعم الله عليك واشكره عليها، وادع للآخرين بالخير."
+                },
+                {
+                    text: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+                    source: "سورة الفلق: 5",
+                    advice: "💡 استعذ بالله من شر الحاسدين، ولا تكن منهم. اقرأ المعوذتين وآية الكرسي للحماية من الحسد."
+                }
+            ],
+            guilt: [
+                {
+                    text: "وَمَن يَعْمَلْ سُوءًا أَوْ يَظْلِمْ نَفْسَهُ ثُمَّ يَسْتَغْفِرِ اللَّهَ يَجِدِ اللَّهَ غَفُورًا رَّحِيمًا",
+                    source: "سورة النساء: 110",
+                    advice: "💡 الشعور بالذنب علامة على حياة الضمير. استغفر الله واعزم على عدم العودة للخطأ، وأصلح ما يمكن إصلاحه."
+                },
+                {
+                    text: "إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ",
+                    source: "سورة البقرة: 222",
+                    advice: "💡 الله يحب من يتوب إليه. لا تدع الذنب يثقل كاهلك، بل اجعله دافعاً للتوبة والإصلاح."
+                }
+            ],
+            weakness: [
+                {
+                    text: "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+                    source: "سورة الطلاق: 3",
+                    advice: "💡 الضعف البشري طبيعي، والقوة الحقيقية من الله. توكل عليه واطلب منه العون والقوة في كل أمورك."
+                },
+                {
+                    text: "وَاللَّهُ غَالِبٌ عَلَىٰ أَمْرِهِ وَلَٰكِنَّ أَكْثَرَ النَّاسِ لَا يَعْلَمُونَ",
+                    source: "سورة يوسف: 21",
+                    advice: "💡 عندما تشعر بالضعف، تذكر أن الله غالب على أمره. استعن به واطلب منه القوة والثبات."
+                }
+            ],
+            betrayal: [
+                {
+                    text: "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+                    source: "سورة الطلاق: 3",
+                    advice: "💡 الخيانة مؤلمة، لكن الله لن يخذلك أبداً. توكل عليه واغفر للناس، فالمغفرة تحرر قلبك من الألم."
+                },
+                {
+                    text: "وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ",
+                    source: "سورة البقرة: 216",
+                    advice: "💡 قد تكون الخيانة بداية لخير أكبر في حياتك. ثق في حكمة الله وقدره، وستجد الخير فيما حدث."
+                }
+            ],
+            failure: [
+                {
+                    text: "وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
+                    source: "سورة آل عمران: 139",
+                    advice: "💡 الفشل ليس نهاية الطريق بل بداية جديدة. تعلم من أخطائك وحاول مرة أخرى، فالمؤمن لا يستسلم."
+                },
+                {
+                    text: "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا * إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+                    source: "سورة الشرح: 5-6",
+                    advice: "💡 بعد كل فشل يأتي النجاح. اصبر واجتهد وتوكل على الله، فهو الذي يقدر الأمور."
+                }
+            ],
+            injustice: [
+                {
+                    text: "وَلَا تَحْسَبَنَّ اللَّهَ غَافِلًا عَمَّا يَعْمَلُ الظَّالِمُونَ",
+                    source: "سورة إبراهيم: 42",
+                    advice: "💡 الله ليس غافلاً عن الظلم. اصبر واطلب العدل من الله، وتأكد أن الظالم سينال جزاءه."
+                },
+                {
+                    text: "إِنَّمَا السَّبِيلُ عَلَى الَّذِينَ يَظْلِمُونَ النَّاسَ وَيَبْغُونَ فِي الْأَرْضِ بِغَيْرِ الْحَقِّ",
+                    source: "سورة الشورى: 42",
+                    advice: "💡 العدالة الإلهية لا تخطئ. اطلب حقك بالطرق المشروعة، وتوكل على الله في إحقاق الحق."
+                }
+            ],
+            poverty: [
+                {
+                    text: "وَمَا مِن دَابَّةٍ فِي الْأَرْضِ إِلَّا عَلَى اللَّهِ رِزْقُهَا",
+                    source: "سورة هود: 6",
+                    advice: "💡 رزقك مضمون عند الله. اعمل واجتهد وتوكل عليه، ولا تقلق فالله يرزق من يشاء بغير حساب."
+                },
+                {
+                    text: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا * وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
+                    source: "سورة الطلاق: 2-3",
+                    advice: "💡 التقوى تفتح أبواب الرزق. اتق الله في كسبك وإنفاقك، وستجد الرزق يأتيك من حيث لا تحتسب."
+                }
+            ],
+            illness: [
+                {
+                    text: "وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ",
+                    source: "سورة الشعراء: 80",
+                    advice: "💡 الشفاء بيد الله وحده. خذ بالأسباب واطلب العلاج، وادع الله بالشفاء واصبر على البلاء."
+                },
+                {
+                    text: "مَا أَصَابَ مِن مُّصِيبَةٍ إِلَّا بِإِذْنِ اللَّهِ ۗ وَمَن يُؤْمِن بِاللَّهِ يَهْدِ قَلْبَهُ",
+                    source: "سورة التغابن: 11",
+                    advice: "💡 المرض اختبار من الله. اصبر واحتسب الأجر، وتذكر أن المرض يكفر الذنوب ويرفع الدرجات."
+                }
+            ],
+            death: [
+                {
+                    text: "وَبَشِّرِ الصَّابِرِينَ * الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",
+                    source: "سورة البقرة: 155-156",
+                    advice: "💡 فقدان الأحباب من أصعب الابتلاءات. اصبر واحتسب الأجر، وادع للمتوفى بالرحمة والمغفرة."
+                },
+                {
+                    text: "كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ الْقِيَامَةِ",
+                    source: "سورة آل عمران: 185",
+                    advice: "💡 الموت حق على كل نفس. تذكر أن الفراق مؤقت وأن اللقاء في الآخرة، واعمل صالحاً لتلقى أحبابك في الجنة."
+                }
+            ],
+            marriage: [
+                {
+                    text: "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
+                    source: "سورة الروم: 21",
+                    advice: "💡 الزواج سكن ومودة ورحمة. ادع الله أن يرزقك الزوج الصالح، واعمل على تحسين نفسك للزواج."
+                },
+                {
+                    text: "وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ ۚ إِن يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللَّهُ مِن فَضْلِهِ",
+                    source: "سورة النور: 32",
+                    advice: "💡 الله يغني المتزوجين من فضله. لا تؤجل الزواج خوفاً من الفقر، فالله يبارك في الرزق بالزواج."
+                }
+            ],
+            children: [
+                {
+                    text: "الْمَالُ وَالْبَنُونَ زِينَةُ الْحَيَاةِ الدُّنْيَا ۖ وَالْبَاقِيَاتُ الصَّالِحَاتُ خَيْرٌ عِندَ رَبِّكَ ثَوَابًا وَخَيْرٌ أَمَلًا",
+                    source: "سورة الكهف: 46",
+                    advice: "💡 الأطفال زينة الحياة الدنيا. ربهم على الإسلام والأخلاق، واجعلهم من الباقيات الصالحات."
+                },
+                {
+                    text: "رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ الدُّعَاءِ",
+                    source: "سورة آل عمران: 38",
+                    advice: "💡 ادع الله بالذرية الطيبة كما دعا زكريا عليه السلام. الله يرزق من يشاء في الوقت المناسب."
+                }
+            ],
+            work: [
+                {
+                    text: "وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ * وَأَنَّ سَعْيَهُ سَوْفَ يُرَىٰ",
+                    source: "سورة النجم: 39-40",
+                    advice: "💡 اعمل بجد واجتهاد، فالله يرى سعيك ويجازيك عليه. لا تيأس من النتائج واستمر في العمل."
+                },
+                {
+                    text: "وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ",
+                    source: "سورة التوبة: 105",
+                    advice: "💡 اعمل بإخلاص وأتقن عملك، فالله يراقب عملك ويجازيك عليه. اجعل عملك عبادة لله."
+                }
+            ],
+            study: [
+                {
+                    text: "وَقُل رَّبِّ زِدْنِي عِلْمًا",
+                    source: "سورة طه: 114",
+                    advice: "💡 اطلب من الله زيادة العلم دائماً. ادرس بجد واجتهاد، واجعل طلب العلم عبادة لله."
+                },
+                {
+                    text: "يَرْفَعِ اللَّهُ الَّذِينَ آمَنُوا مِنكُمْ وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ",
+                    source: "سورة المجادلة: 11",
+                    advice: "💡 العلم يرفع صاحبه درجات عند الله. اجتهد في دراستك واطلب العلم النافع في الدين والدنيا."
+                }
+            ],
+            success: [
+                {
+                    text: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مِنْ أَمْرِهِ يُسْرًا",
+                    source: "سورة الطلاق: 4",
+                    advice: "💡 النجاح الحقيقي مع تقوى الله. اشكر الله على نجاحك ولا تنس فضله عليك، واستخدم نجاحك في خدمة الآخرين."
+                },
+                {
+                    text: "وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ ۚ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ أُنِيبُ",
+                    source: "سورة هود: 88",
+                    advice: "💡 كل توفيق من الله. لا تغتر بنجاحك واعلم أن الله هو الذي وفقك، واستمر في التوكل عليه."
                 }
             ],
             fear: [
@@ -921,16 +1351,19 @@
                 {
                     text: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا * وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
                     source: "سورة الطلاق: 2-3",
+                    tafseer: "يقول ابن كثير: أي من اتقى الله فيما أمره به وترك ما نهاه عنه، جعل له من أمره مخرجاً، أي فرجاً ومخلصاً من كل ضيق وشدة، ورزقه من حيث لا يحتسب، أي من جهة لا تخطر بباله ولا يظن أن الرزق يأتيه منها.",
                     advice: "💡 عندما تكون في حيرة، اطلب الهداية من الله واستشر أهل الخبرة. اكتب إيجابيات وسلبيات كل خيار أمامك لتوضيح الرؤية."
                 },
                 {
                     text: "وَمَا كَانَ لِمُؤْمِنٍ وَلَا مُؤْمِنَةٍ إِذَا قَضَى اللَّهُ وَرَسُولُهُ أَمْرًا أَن يَكُونَ لَهُمُ الْخِيَرَةُ مِنْ أَمْرِهِمْ",
                     source: "سورة الأحزاب: 36",
+                    tafseer: "يقول ابن كثير: هذه الآية عامة في جميع الأمور، وذلك أنه إذا حكم الله ورسوله بشيء فليس لأحد مخالفته، ولا اختيار لأحد هاهنا، ولا رأي ولا قول، كما قال تعالى: {وما كان لمؤمن ولا مؤمنة إذا قضى الله ورسوله أمراً أن يكون لهم الخيرة من أمرهم}.",
                     advice: "💡 ثق في حكمة الله وقدره. صل صلاة الاستخارة واطلب من الله أن يوفقك للخيار الأفضل، ثم توكل عليه."
                 },
                 {
                     text: "وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى الْخَاشِعِينَ",
                     source: "سورة البقرة: 45",
+                    tafseer: "يقول ابن كثير: يأمر تعالى بالاستعانة بالصبر والصلاة، والصبر صبران: صبر عن المعصية، وصبر على الطاعة. والصلاة من أكبر العون على الثبات في الأمر، كما قال النبي صلى الله عليه وسلم: 'وجعلت قرة عيني في الصلاة'.",
                     advice: "💡 الصلاة تجلب الوضوح للعقل والسكينة للقلب. خذ وقتاً للتأمل والدعاء قبل اتخاذ أي قرار مهم."
                 }
             ],
@@ -1166,66 +1599,6 @@
                 text: "سورة الحج هي السورة الوحيدة في القرآن التي تحتوي على سجدتي تلاوة",
                 source: "معلومة قرآنية",
                 advice: "💡 السجدة الأولى في الآية 18، والثانية في الآية 77. وهناك 15 سجدة تلاوة في القرآن كله."
-            },
-            {
-                title: "أول ما نزل من القرآن",
-                text: "أول ما نزل من القرآن الكريم هو صدر سورة العلق: 'اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ'",
-                source: "معلومة قرآنية",
-                advice: "💡 نزلت في غار حراء على النبي ﷺ وهو في الأربعين من عمره، وكانت بداية الرسالة الخاتمة للبشرية."
-            },
-            {
-                title: "آخر ما نزل من القرآن",
-                text: "آخر ما نزل من القرآن على الأرجح هو قوله تعالى: 'وَاتَّقُوا يَوْماً تُرْجَعُونَ فِيهِ إِلَى اللَّهِ'",
-                source: "معلومة قرآنية - البقرة: 281",
-                advice: "💡 نزلت قبل وفاة النبي ﷺ بتسعة أيام، وهي تذكير بيوم القيامة والحساب، ختام مناسب للوحي."
-            },
-            {
-                title: "السورة التي تعدل ثلث القرآن",
-                text: "سورة الإخلاص تعدل ثلث القرآن في الأجر كما أخبر النبي ﷺ",
-                source: "معلومة قرآنية",
-                advice: "💡 من قرأ 'قل هو الله أحد' ثلاث مرات كان له أجر قراءة القرآن كاملاً، وهي أصل التوحيد."
-            },
-            {
-                title: "عدد الأنبياء المذكورين في القرآن",
-                text: "ذُكر في القرآن الكريم 25 نبياً ورسولاً بأسمائهم الصريحة",
-                source: "معلومة قرآنية",
-                advice: "💡 منهم آدم ونوح وإبراهيم وموسى وعيسى ومحمد عليهم السلام، وكلهم جاؤوا بدعوة التوحيد."
-            },
-            {
-                title: "السورة التي تسمى قلب القرآن",
-                text: "سورة يس تسمى 'قلب القرآن' كما ورد في بعض الأحاديث",
-                source: "معلومة قرآنية",
-                advice: "💡 تحتوي على مواضيع مهمة كالتوحيد والبعث والجزاء، وتُقرأ عند المحتضرين لتسهيل خروج الروح."
-            },
-            {
-                title: "أكثر كلمة تكررت في القرآن",
-                text: "كلمة 'الله' هي أكثر الكلمات تكراراً في القرآن، وردت 2699 مرة",
-                source: "معلومة قرآنية",
-                advice: "💡 هذا يدل على أن القرآن كله يدور حول الله وتوحيده وعبادته، فهو محور الرسالة الإسلامية."
-            },
-            {
-                title: "السورة التي نزلت كاملة مرة واحدة",
-                text: "سورة الفاتحة نزلت كاملة مرة واحدة، وهي أم الكتاب والسبع المثاني",
-                source: "معلومة قرآنية",
-                advice: "💡 تحتوي على جوامع معاني القرآن: الحمد والثناء والدعاء والتوحيد، ولا تصح الصلاة بدونها."
-            },
-            {
-                title: "عدد السجدات في القرآن",
-                text: "يوجد في القرآن الكريم 15 موضعاً لسجود التلاوة موزعة على 14 سورة",
-                source: "معلومة قرآنية",
-                advice: "💡 عند قراءة هذه الآيات يُستحب السجود تعظيماً لله، وسورة الحج فيها سجدتان والباقي سجدة واحدة."
-            },
-            {
-                title: "أطول آية في القرآن",
-                text: "آية الدَّين في سورة البقرة (آية 282) هي أطول آية في القرآن الكريم",
-                source: "معلومة قرآنية",
-                advice: "💡 تتحدث عن أحكام الدين والتوثيق والشهادة، وهي مثال على تفصيل القرآن للأحكام المالية والاجتماعية."
-            },
-            {
-                title: "السورة التي تحتوي على أكبر عدد من أسماء الله",
-                text: "سورة الحشر تحتوي على أكبر عدد من أسماء الله الحسنى في آياتها الأخيرة",
-                source: "معلومة قرآنية",
-                advice: "💡 الآيات الأخيرة من سورة الحشر تحتوي على 17 اسماً من أسماء الله الحسنى، وهي من أعظم آيات التوحيد."
             }
         ];
 
@@ -1327,823 +1700,116 @@
                 title: "اختارك الله لتكون قريباً منه",
                 text: "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
                 source: "سورة البقرة: 186",
-                advice: "💡 الله قريب منك، يسمع دعاءك ويجيب نداءك. هذا القرب الإلهي اختصك الله به كمؤمن. استغل هذا القرب بالدعاء والذكر."
+                advice: "💡 الله قريب منك، يسمع دعاءك ويعلم حالك. اختارك لتكون من عباده الذين يدعونه ويتقربون إليه. هذا شرف لا يقدر بثمن."
             }
         ];
 
         const divineMessages = [
             {
-                title: "رسالة عن الرزق",
-                text: "وَمَا مِن دَابَّةٍ فِي الْأَرْضِ إِلَّا عَلَى اللَّهِ رِزْقُهَا وَيَعْلَمُ مُسْتَقَرَّهَا وَمُسْتَوْدَعَهَا",
+                title: "رسالة من الله عن رحمته",
+                text: "قُل يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا ۚ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ",
+                source: "سورة الزمر: 53",
+                advice: "💡 مهما كانت ذنوبك، فإن رحمة الله أوسع. لا تيأس من مغفرة الله، وتب إليه بصدق."
+            },
+            {
+                title: "رسالة من الله عن قربه منك",
+                text: "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا لِي وَلْيُؤْمِنُوا بِي لَعَلَّهُمْ يَرْشُدُونَ",
+                source: "سورة البقرة: 186",
+                advice: "💡 الله قريب منك دائماً، يسمع دعاءك ويعلم حالك. ادعه بصدق وثق أنه سيجيبك."
+            },
+            {
+                title: "رسالة من الله عن الفرج",
+                text: "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا * إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+                source: "سورة الشرح: 5-6",
+                advice: "💡 مع كل صعوبة تمر بها، هناك تيسير من الله. اصبر وتفاءل، فالفرج قادم لا محالة."
+            },
+            {
+                title: "رسالة من الله عن حبه لك",
+                text: "قُلْ إِن كُنتُمْ تُحِبُّونَ اللَّهَ فَاتَّبِعُونِي يُحْبِبْكُمُ اللَّهُ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ ۗ وَاللَّهُ غَفُورٌ رَّحِيمٌ",
+                source: "سورة آل عمران: 31",
+                advice: "💡 الله يحبك ويريد منك أن تتبع طريق النبي ﷺ لتنال محبته ومغفرته."
+            },
+            {
+                title: "رسالة من الله عن عنايته بك",
+                text: "وَمَا مِن دَابَّةٍ فِي الْأَرْضِ إِلَّا عَلَى اللَّهِ رِزْقُهَا وَيَعْلَمُ مُسْتَقَرَّهَا وَمُسْتَوْدَعَهَا ۚ كُلٌّ فِي كِتَابٍ مُّبِينٍ",
                 source: "سورة هود: 6",
-                advice: "💡 رزقك مكتوب ومضمون من الله. لا تقلق بشأن الرزق، واعمل بجد وتوكل على الله. كل مخلوق على الأرض له رزق مقدر."
-            },
-            {
-                title: "رسالة عن القدر",
-                text: "مَا أَصَابَ مِن مُّصِيبَةٍ فِي الْأَرْضِ وَلَا فِي أَنفُسِكُمْ إِلَّا فِي كِتَابٍ مِّن قَبْلِ أَن نَّبْرَأَهَا",
-                source: "سورة الحديد: 22",
-                advice: "💡 كل ما يحدث لك مكتوب في اللوح المحفوظ. ارض بقدر الله واعلم أن كل شيء بحكمة، وأن الله يختار لك الأفضل."
-            },
-            {
-                title: "رسالة عن العلم",
-                text: "وَقُل رَّبِّ زِدْنِي عِلْمًا",
-                source: "سورة طه: 114",
-                advice: "💡 العلم نور يضيء طريقك في الحياة. اطلب من الله أن يزيدك علماً نافعاً، واقرأ واتعلم في كل مجالات الحياة."
-            },
-            {
-                title: "رسالة عن الصحبة",
-                text: "الْأَخِلَّاءُ يَوْمَئِذٍ بَعْضُهُمْ لِبَعْضٍ عَدُوٌّ إِلَّا الْمُتَّقِينَ",
-                source: "سورة الزخرف: 67",
-                advice: "💡 اختر أصدقاءك بعناية. الصداقة الحقيقية مبنية على التقوى والخير. اصحب من يذكرك بالله ويعينك على طاعته."
-            },
-            {
-                title: "رسالة عن الوقت",
-                text: "وَهُوَ الَّذِي جَعَلَ اللَّيْلَ وَالنَّهَارَ خِلْفَةً لِّمَنْ أَرَادَ أَن يَذَّكَّرَ أَوْ أَرَادَ شُكُورًا",
-                source: "سورة الفرقان: 62",
-                advice: "💡 الوقت نعمة عظيمة من الله. استغل كل يوم في الذكر والشكر والعمل الصالح. لا تضيع وقتك فيما لا ينفع."
-            },
-            {
-                title: "رسالة عن التوبة",
-                text: "إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ",
-                source: "سورة البقرة: 222",
-                advice: "💡 الله يحب من يتوب إليه مهما كان ذنبه. لا تيأس من رحمة الله، وبادر بالتوبة النصوح في كل وقت."
+                advice: "💡 الله يتكفل برزق كل مخلوق، فكيف بك وأنت أكرم خلقه؟ لا تقلق بشأن رزقك."
             }
         ];
 
-        const prayerCategories = {
+        const prayers = {
             travel: [
                 {
-                    title: "دعاء السفر الكامل",
-                    text: "اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى، اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ، اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ، وَالْخَلِيفَةُ فِي الْأَهْلِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ، وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ",
-                    source: "رواه الترمذي وصححه الألباني",
-                    advice: "💡 هذا هو دعاء السفر الكامل كما علمنا النبي ﷺ. ادع به عند بداية أي سفر طويل أو قصير، وتذكر أن الله هو الصاحب في السفر والخليفة في الأهل."
+                    text: "اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى، اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ",
+                    source: "دعاء السفر",
+                    advice: "💡 ادع بهذا الدعاء عند بداية أي سفر، واطلب من الله التوفيق والحفظ في رحلتك."
                 },
                 {
-                    title: "دعاء ركوب المركبة",
                     text: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ * وَإِنَّا إِلَى رَبِّنَا لَمُنقَلِبُونَ",
                     source: "سورة الزخرف: 13-14",
-                    advice: "💡 قل هذا الدعاء عند ركوب أي وسيلة مواصلات. تذكر نعمة الله في تسخير هذه الوسائل لك."
+                    advice: "💡 اقرأ هذا الدعاء عند ركوب أي وسيلة مواصلات، واشكر الله على تسخير هذه النعم لك."
                 }
             ],
             morning: [
                 {
-                    title: "آية الكرسي",
-                    text: "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
-                    source: "سورة البقرة: 255",
-                    advice: "💡 من قرأ آية الكرسي في الصباح حُفظ إلى المساء، ومن قرأها في المساء حُفظ إلى الصباح."
+                    text: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+                    source: "أذكار الصباح",
+                    advice: "💡 ابدأ يومك بهذا الذكر لتذكر نفسك أن الملك لله وحده، وأن كل شيء بيده."
                 },
                 {
-                    title: "أصبحنا وأصبح الملك لله",
-                    text: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ",
-                    source: "رواه مسلم",
-                    advice: "💡 هذا الذكر يحميك من شر اليوم ويجلب لك خيره. ابدأ به يومك بيقين وثقة في الله."
-                },
-                {
-                    title: "اللهم بك أصبحنا",
                     text: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",
-                    source: "رواه الترمذي",
-                    advice: "💡 تذكر أن حياتك كلها بيد الله، وأن إليه المصير. هذا يجعلك تعيش بوعي وخشية من الله."
-                },
-                {
-                    title: "اللهم أنت ربي",
-                    text: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
-                    source: "رواه البخاري - سيد الاستغفار",
-                    advice: "💡 هذا سيد الاستغفار. من قاله في الصباح موقناً به فمات من يومه دخل الجنة."
-                },
-                {
-                    title: "اللهم عافني في بدني",
-                    text: "اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ، لَا إِلَهَ إِلَّا أَنْتَ",
-                    source: "رواه أبو داود",
-                    advice: "💡 ادع الله بالعافية في جسدك وحواسك، واستعذ من الكفر والفقر وعذاب القبر."
-                },
-                {
-                    title: "حسبي الله لا إله إلا هو",
-                    text: "حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ، عَلَيْهِ تَوَكَّلْتُ، وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ (7 مرات)",
-                    source: "رواه أبو داود",
-                    advice: "💡 من قال هذا الذكر 7 مرات في الصباح والمساء كفاه الله ما أهمه من أمر الدنيا والآخرة."
-                },
-                {
-                    title: "اللهم إني أسألك العفو والعافية",
-                    text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
-                    source: "رواه أبو داود وابن ماجه",
-                    advice: "💡 هذا دعاء شامل للحماية من جميع الجهات. ادع به بيقين وثقة في حفظ الله لك."
-                },
-                {
-                    title: "اللهم إني أعوذ بك من الهم والحزن",
-                    text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ",
-                    source: "رواه البخاري",
-                    advice: "💡 استعذ بالله من الصفات السيئة التي تعيق تقدمك في الحياة. هذا الدعاء يقوي عزيمتك."
-                },
-                {
-                    title: "سبحان الله وبحمده",
-                    text: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ (100 مرة)",
-                    source: "رواه البخاري ومسلم",
-                    advice: "💡 من قال هذا الذكر 100 مرة في الصباح والمساء حُطت عنه خطاياه وإن كانت مثل زبد البحر."
-                },
-                {
-                    title: "لا إله إلا الله وحده لا شريك له",
-                    text: "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (100 مرة)",
-                    source: "رواه البخاري ومسلم",
-                    advice: "💡 من قال هذا الذكر 100 مرة كان له عدل عشر رقاب، وكتبت له مائة حسنة، ومحيت عنه مائة سيئة."
-                },
-                {
-                    title: "سبحان الله العظيم وبحمده",
-                    text: "سُبْحَانَ اللَّهِ الْعَظِيمِ وَبِحَمْدِهِ (3 مرات)",
-                    source: "رواه أبو داود والترمذي",
-                    advice: "💡 من قال هذا الذكر 3 مرات في الصباح والمساء غُرست له نخلة في الجنة."
-                },
-                {
-                    title: "أستغفر الله العظيم",
-                    text: "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيَّ الْقَيُّومَ وَأَتُوبُ إِلَيْهِ (3 مرات)",
-                    source: "رواه أبو داود والترمذي",
-                    advice: "💡 من قال هذا الاستغفار 3 مرات غُفرت له ذنوبه وإن كان فاراً من الزحف."
+                    source: "أذكار الصباح",
+                    advice: "💡 هذا الذكر يذكرك أن حياتك كلها بيد الله، من الصباح إلى المساء، من الحياة إلى الموت."
                 }
             ],
             evening: [
                 {
-                    title: "آية الكرسي",
-                    text: "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
-                    source: "سورة البقرة: 255",
-                    advice: "💡 من قرأ آية الكرسي في المساء حُفظ إلى الصباح من كل سوء."
+                    text: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+                    source: "أذكار المساء",
+                    advice: "💡 اختتم يومك بهذا الذكر لتشكر الله على نعم اليوم وتستعد لليوم التالي."
                 },
                 {
-                    title: "أمسينا وأمسى الملك لله",
-                    text: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا",
-                    source: "رواه مسلم",
-                    advice: "💡 اختتم يومك بهذا الذكر لتحمد الله على نعمه وتطلب خير الليلة القادمة."
-                },
-                {
-                    title: "اللهم بك أمسينا",
                     text: "اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ",
-                    source: "رواه الترمذي",
-                    advice: "💡 تذكر في المساء أن حياتك ومماتك بيد الله، وأن إليه المصير والحساب."
-                },
-                {
-                    title: "اللهم أنت ربي - سيد الاستغفار",
-                    text: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
-                    source: "رواه البخاري - سيد الاستغفار",
-                    advice: "💡 من قاله في المساء موقناً به فمات من ليلته دخل الجنة. هذا أعظم استغفار."
-                },
-                {
-                    title: "اللهم عافني في بدني",
-                    text: "اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ، لَا إِلَهَ إِلَّا أَنْتَ",
-                    source: "رواه أبو داود",
-                    advice: "💡 ادع الله في المساء بالعافية والحماية من الكفر والفقر وعذاب القبر."
-                },
-                {
-                    title: "حسبي الله لا إله إلا هو",
-                    text: "حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ، عَلَيْهِ تَوَكَّلْتُ، وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ (7 مرات)",
-                    source: "رواه أبو داود",
-                    advice: "💡 من قال هذا الذكر 7 مرات في المساء كفاه الله ما أهمه من أمر الدنيا والآخرة."
-                },
-                {
-                    title: "اللهم إني أسألك العفو والعافية",
-                    text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
-                    source: "رواه أبو داود وابن ماجه",
-                    advice: "💡 دعاء شامل للحماية في الليل من جميع الجهات. ادع به قبل النوم بثقة في حفظ الله."
-                },
-                {
-                    title: "اللهم إني أعوذ بك من الهم والحزن",
-                    text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ",
-                    source: "رواه البخاري",
-                    advice: "💡 استعذ بالله في المساء من الهموم والأحزان والصفات السيئة التي تضعف الإنسان."
-                },
-                {
-                    title: "المعوذتان - سورة الفلق",
-                    text: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ * مِن شَرِّ مَا خَلَقَ * وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ * وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ * وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ (3 مرات)",
-                    source: "سورة الفلق",
-                    advice: "💡 اقرأ سورة الفلق 3 مرات في المساء للحماية من شر المخلوقات والحسد والسحر."
-                },
-                {
-                    title: "المعوذتان - سورة الناس",
-                    text: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ * مَلِكِ النَّاسِ * إِلَهِ النَّاسِ * مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ * الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ * مِنَ الْجِنَّةِ وَالنَّاسِ (3 مرات)",
-                    source: "سورة الناس",
-                    advice: "💡 اقرأ سورة الناس 3 مرات في المساء للحماية من وساوس الشياطين والجن والإنس."
-                },
-                {
-                    title: "سبحان الله وبحمده",
-                    text: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ (100 مرة)",
-                    source: "رواه البخاري ومسلم",
-                    advice: "💡 من قال هذا الذكر 100 مرة في المساء حُطت عنه خطاياه وإن كانت مثل زبد البحر."
-                },
-                {
-                    title: "اللهم أعني على ذكرك وشكرك",
-                    text: "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
-                    source: "رواه أبو داود",
-                    advice: "💡 ادع الله في المساء أن يعينك على ذكره وشكره وحسن عبادته في اليوم التالي."
+                    source: "أذكار المساء",
+                    advice: "💡 هذا الذكر يذكرك في المساء أن مصيرك إلى الله، فاستعد للقائه بالعمل الصالح."
                 }
             ],
             ruqyah: [
                 {
-                    title: "الرقية الشرعية - الفاتحة",
-                    text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ * الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ * الرَّحْمَنِ الرَّحِيمِ * مَالِكِ يَوْمِ الدِّينِ",
-                    source: "سورة الفاتحة: 1-4",
-                    advice: "💡 اقرأ سورة الفاتحة كاملة مع النفث على اليدين ومسح الجسم للشفاء بإذن الله."
+                    text: "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ * بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ * الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+                    source: "سورة الفاتحة",
+                    advice: "💡 الفاتحة شفاء من كل داء. اقرأها على نفسك أو على المريض مع النفث الخفيف."
                 },
                 {
-                    title: "آية الكرسي للرقية",
-                    text: "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ",
-                    source: "سورة البقرة: 255",
-                    advice: "💡 اقرأ آية الكرسي مع النفث للحماية من كل سوء والشفاء من الأمراض."
-                },
-                {
-                    title: "دعاء الشفاء",
-                    text: "اللَّهُمَّ رَبَّ النَّاسِ، أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لَا شِفَاءَ إِلَّا شِفَاؤُكَ، شِفَاءً لَا يُغَادِرُ سَقَمًا",
-                    source: "رواه البخاري ومسلم",
-                    advice: "💡 ادع بهذا الدعاء للمريض مع وضع اليد على مكان الألم."
+                    text: "قُلْ هُوَ اللَّهُ أَحَدٌ * اللَّهُ الصَّمَدُ * لَمْ يَلِدْ وَلَمْ يُولَدْ * وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+                    source: "سورة الإخلاص",
+                    advice: "💡 سورة الإخلاص تعدل ثلث القرآن، وهي من أقوى سور الرقية الشرعية."
                 }
             ],
             general: [
                 {
-                    title: "دعاء الاستخارة",
-                    text: "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ",
-                    source: "رواه البخاري",
-                    advice: "💡 ادع بهذا الدعاء عند الحيرة في أي أمر. صل ركعتين ثم ادع، وتوكل على الله في اختيارك."
+                    text: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+                    source: "سورة البقرة: 201",
+                    advice: "💡 هذا دعاء جامع لخير الدنيا والآخرة، ادع به في كل وقت."
                 },
                 {
-                    title: "دعاء الهم والحزن",
-                    text: "اللَّهُمَّ إِنِّي عَبْدُكَ، ابْنُ عَبْدِكَ، ابْنُ أَمَتِكَ، نَاصِيَتِي بِيَدِكَ، مَاضٍ فِيَّ حُكْمُكَ، عَدْلٌ فِيَّ قَضَاؤُكَ",
-                    source: "رواه أحمد",
-                    advice: "💡 هذا الدعاء يذهب الهم والحزن بإذن الله. ردده عند الضيق وتذكر أنك عبد لله وهو يرعاك."
-                },
-                {
-                    title: "دعاء الرزق",
-                    text: "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
-                    source: "رواه الترمذي",
-                    advice: "💡 ادع بهذا الدعاء لطلب الرزق الحلال والغنى عن الناس. اعمل واجتهد وتوكل على الله."
+                    text: "رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي * وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي * يَفْقَهُوا قَوْلِي",
+                    source: "سورة طه: 25-28",
+                    advice: "💡 دعاء موسى عليه السلام، ادع به عند الحاجة للتوفيق في أمر مهم."
                 }
             ],
             hadith: [
                 {
-                    title: "حديث عن الذكر",
-                    text: "مَن قَالَ: لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، فِي يَوْمٍ مِائَةَ مَرَّةٍ",
-                    source: "رواه البخاري ومسلم",
-                    advice: "💡 من قال هذا الذكر 100 مرة في اليوم، كان له عدل عشر رقاب، وكتبت له مائة حسنة."
-                },
-                {
-                    title: "حديث عن الصلاة على النبي",
-                    text: "مَن صَلَّى عَلَيَّ صَلَاةً صَلَّى اللَّهُ عَلَيْهِ بِهَا عَشْرًا",
-                    source: "رواه مسلم",
-                    advice: "💡 أكثر من الصلاة على النبي ﷺ، فكل صلاة عليه يصلي الله عليك بها عشراً."
-                },
-                {
-                    title: "حديث عن الاستغفار",
-                    text: "مَن لَزِمَ الِاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِن كُلِّ ضِيقٍ مَخْرَجًا وَمِن كُلِّ هَمٍّ فَرَجًا وَرَزَقَهُ مِن حَيْثُ لَا يَحْتَسِبُ",
-                    source: "رواه أبو داود",
-                    advice: "💡 أكثر من الاستغفار، فهو مفتاح الفرج والرزق وحل المشاكل."
+                    text: "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+                    source: "حديث شريف",
+                    advice: "💡 دعاء جامع للاستعانة بالله على الطاعات والعبادات."
                 }
             ]
         };
 
-        const moodInfo = {
-            sadness: { icon: '😢', title: 'آيات للحزن والهم' },
-            confusion: { icon: '🤔', title: 'آيات للحيرة والقرار' },
-            anxiety: { icon: '😰', title: 'آيات للقلق والخوف' },
-            gratitude: { icon: '🙏', title: 'آيات الشكر والحمد' },
-            joy: { icon: '😊', title: 'آيات الفرح والسرور' },
-            hope: { icon: '✨', title: 'آيات الأمل والرجاء' },
-            guidance: { icon: '🧭', title: 'آيات طلب الهداية' },
-            patience: { icon: '⏳', title: 'آيات الصبر والثبات' },
-            forgiveness: { icon: '💚', title: 'آيات الاستغفار والتوبة' },
-            fear: { icon: '😨', title: 'آيات للخوف والفزع' },
-            loneliness: { icon: '😔', title: 'آيات للوحدة والعزلة' },
-            anger: { icon: '😡', title: 'آيات للغضب والانفعال' },
-            stress: { icon: '😫', title: 'آيات للضغط والتوتر' },
-            love: { icon: '❤️', title: 'آيات عن الحب والمودة' },
-            peace: { icon: '🕊️', title: 'آيات السكينة والطمأنينة' }
-        };
-
-        let currentContent = '';
-        let currentContentIndex = 0;
-        let currentContentType = '';
-        let currentDataSource = [];
-
-        function showTab(tabName) {
-            // Remove active class from all tab buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Find and activate the correct tab button
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            tabButtons.forEach(btn => {
-                const btnText = btn.textContent.trim();
-                if ((tabName === 'moods' && btnText.includes('المشاعر')) ||
-                    (tabName === 'divine' && btnText.includes('رسائل ربانية')) ||
-                    (tabName === 'prayers' && btnText.includes('أدعية')) ||
-                    (tabName === 'chosen' && btnText.includes('لماذا اختارك الله')) ||
-                    (tabName === 'hadith' && btnText.includes('أحاديث مختارة')) ||
-                    (tabName === 'wisdom' && btnText.includes('حكم وعبر')) ||
-                    (tabName === 'quranKareem' && btnText.includes('القرآن الكريم')) ||
-                    (tabName === 'quran' && btnText.includes('معلومات قرآنية')) ||
-                    (tabName === 'shamela' && btnText.includes('المكتبة الشاملة')) ||
-                    (tabName === 'fatawa' && btnText.includes('الفتاوى الإسلامية'))) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Hide welcome message when any tab is selected
-            const welcomeMessage = document.getElementById('welcomeMessage');
-            if (welcomeMessage) {
-                welcomeMessage.classList.add('hidden');
-            }
-            
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            
-            // Show selected tab content
-            const targetTab = document.getElementById(tabName + 'Tab');
-            if (targetTab) {
-                targetTab.classList.remove('hidden');
-            }
-            
-            // Hide content container when switching tabs
-            document.getElementById('contentContainer').classList.add('hidden');
-        }
-
-        function selectMood(mood) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.mood-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-            
-            currentContent = mood;
-            currentContentType = 'mood';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showDivineMessage() {
-            currentContentType = 'divine';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showChosenMessage() {
-            currentContentType = 'chosen';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showHadithMessage() {
-            currentContentType = 'hadith';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showWisdomMessage() {
-            currentContentType = 'wisdom';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showQuranInfo() {
-            currentContentType = 'quranInfo';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showHadithMessage() {
-            currentContentType = 'hadith';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showPrayerCategory(category) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.prayer-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-            
-            currentContent = category;
-            currentContentType = 'prayer';
-            
-            // For morning and evening prayers, start from the first item
-            if (category === 'morning' || category === 'evening') {
-                currentDataSource = prayerCategories[category];
-                
-                const categoryIcons = {
-                    morning: '🌅',
-                    evening: '🌙'
-                };
-                
-                document.getElementById('contentIcon').textContent = categoryIcons[category];
-                document.getElementById('contentTitle').textContent = currentDataSource[0].title;
-                
-                updateContentDisplay(currentDataSource[0], 0);
-            } else {
-                showRandomContent();
-            }
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showRandomPrayer() {
-            const categories = Object.keys(prayerCategories);
-            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-            
-            currentContent = randomCategory;
-            currentContentType = 'prayer';
-            showRandomContent();
-            
-            // Show content container
-            const container = document.getElementById('contentContainer');
-            container.classList.remove('hidden');
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showRandomContent() {
-            let content, randomIndex;
-            
-            if (currentContentType === 'mood') {
-                currentDataSource = verses[currentContent];
-                randomIndex = Math.floor(Math.random() * currentDataSource.length);
-                content = currentDataSource[randomIndex];
-                
-                // Update mood info
-                document.getElementById('contentIcon').textContent = moodInfo[currentContent].icon;
-                document.getElementById('contentTitle').textContent = moodInfo[currentContent].title;
-            } else if (currentContentType === 'divine') {
-                currentDataSource = divineMessages;
-                randomIndex = Math.floor(Math.random() * currentDataSource.length);
-                content = currentDataSource[randomIndex];
-                
-                // Update divine message info
-                document.getElementById('contentIcon').textContent = '📜';
-                document.getElementById('contentTitle').textContent = content.title;
-            } else if (currentContentType === 'chosen') {
-                currentDataSource = chosenMessages;
-                randomIndex = Math.floor(Math.random() * currentDataSource.length);
-                content = currentDataSource[randomIndex];
-                
-                // Update chosen message info
-                document.getElementById('contentIcon').textContent = '⭐';
-                document.getElementById('contentTitle').textContent = content.title;
-            } else if (currentContentType === 'hadith') {
-                currentDataSource = hadithMessages;
-                randomIndex = Math.floor(Math.random() * currentDataSource.length);
-                content = currentDataSource[randomIndex];
-                
-                // Update hadith message info
-                document.getElementById('contentIcon').textContent = '📚';
-                document.getElementById('contentTitle').textContent = content.title;
-            } else if (currentContentType === 'wisdom') {
-                currentDataSource = wisdomMessages;
-                randomIndex = Math.floor(Math.random() * currentDataSource.length);
-                content = currentDataSource[randomIndex];
-                
-                // Update wisdom message info
-                document.getElementById('contentIcon').textContent = '🌟';
-                document.getElementById('contentTitle').textContent = content.title;
-            } else if (currentContentType === 'quranInfo') {
-                currentDataSource = quranInfoMessages;
-                randomIndex = Math.floor(Math.random() * currentDataSource.length);
-                content = currentDataSource[randomIndex];
-                
-                // Update quran info message info
-                document.getElementById('contentIcon').textContent = '📖';
-                document.getElementById('contentTitle').textContent = content.title;
-            } else if (currentContentType === 'prayer') {
-                currentDataSource = prayerCategories[currentContent];
-                randomIndex = Math.floor(Math.random() * currentDataSource.length);
-                content = currentDataSource[randomIndex];
-                
-                // Update prayer info based on category
-                const categoryIcons = {
-                    travel: '✈️',
-                    morning: '🌅',
-                    evening: '🌙',
-                    ruqyah: '📿',
-                    general: '🤲',
-                    hadith: '📚'
-                };
-                
-                document.getElementById('contentIcon').textContent = categoryIcons[currentContent] || '🤲';
-                document.getElementById('contentTitle').textContent = content.title;
-            }
-            
-            updateContentDisplay(content, randomIndex);
-        }
-
-        function showContentByIndex(index) {
-            if (index < 0 || index >= currentDataSource.length) return;
-            
-            const content = currentDataSource[index];
-            
-            if (currentContentType === 'divine' || currentContentType === 'prayer' || currentContentType === 'chosen' || currentContentType === 'hadith' || currentContentType === 'wisdom' || currentContentType === 'quranInfo') {
-                document.getElementById('contentTitle').textContent = content.title;
-            }
-            
-            updateContentDisplay(content, index);
-        }
-
-        function updateContentDisplay(content, index) {
-            // Update content
-            document.getElementById('contentText').textContent = content.text;
-            document.getElementById('contentSource').textContent = content.source;
-            document.getElementById('contentAdvice').textContent = content.advice;
-            
-            // Update progress info
-            document.getElementById('currentNumber').textContent = index + 1;
-            document.getElementById('totalNumber').textContent = currentDataSource.length;
-            
-            // Update navigation buttons
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            prevBtn.style.opacity = index === 0 ? '0.5' : '1';
-            nextBtn.style.opacity = index === currentDataSource.length - 1 ? '0.5' : '1';
-            
-            // Show/hide navigation for sequential content (morning/evening prayers)
-            const navButtons = document.getElementById('navigationButtons');
-            const progressInfo = document.getElementById('progressInfo');
-            
-            if (currentContentType === 'prayer' && (currentContent === 'morning' || currentContent === 'evening')) {
-                navButtons.style.display = 'flex';
-                progressInfo.style.display = 'block';
-            } else {
-                navButtons.style.display = 'none';
-                progressInfo.style.display = 'none';
-            }
-            
-            // Add animation
-            const contentCard = document.querySelector('.verse-card');
-            contentCard.classList.remove('show');
-            setTimeout(() => {
-                contentCard.classList.add('show');
-            }, 100);
-            
-            currentContentIndex = index;
-        }
-
-        function showPreviousContent() {
-            if (currentContentIndex > 0) {
-                showContentByIndex(currentContentIndex - 1);
-            }
-        }
-
-        function showNextContent() {
-            if (currentContentIndex < currentDataSource.length - 1) {
-                showContentByIndex(currentContentIndex + 1);
-            }
-        }
-
-        function getNewContent() {
-            let newIndex;
-            
-            // Make sure we get different content
-            do {
-                newIndex = Math.floor(Math.random() * currentDataSource.length);
-            } while (newIndex === currentContentIndex && currentDataSource.length > 1);
-            
-            const content = currentDataSource[newIndex];
-            
-            // Update content with animation
-            const contentCard = document.querySelector('.verse-card');
-            contentCard.style.opacity = '0.7';
-            contentCard.style.transform = 'scale(0.95)';
-            
-            setTimeout(() => {
-                if (currentContentType === 'divine' || currentContentType === 'prayer' || currentContentType === 'chosen' || currentContentType === 'hadith' || currentContentType === 'wisdom' || currentContentType === 'quranInfo') {
-                    document.getElementById('contentTitle').textContent = content.title;
-                }
-                
-                updateContentDisplay(content, newIndex);
-                
-                contentCard.style.opacity = '1';
-                contentCard.style.transform = 'scale(1)';
-                contentCard.classList.add('show');
-            }, 200);
-        }
-
-        function shareContent() {
-            const title = document.getElementById('contentTitle').textContent;
-            const text = document.getElementById('contentText').textContent;
-            const source = document.getElementById('contentSource').textContent;
-            
-            const shareText = `${title}\n\n${text}\n\n${source}\n\n🌙 من تطبيق "آيات للروح"`;
-            
-            // Try Web Share API first (works on mobile devices)
-            if (navigator.share && navigator.canShare && navigator.canShare({ text: shareText })) {
-                navigator.share({
-                    title: 'آيات للروح',
-                    text: shareText
-                }).then(() => {
-                    showNotification('تم المشاركة بنجاح! 📤', 'success');
-                }).catch((error) => {
-                    console.log('Error sharing:', error);
-                    fallbackShare(shareText);
-                });
-            } else {
-                // Fallback to copying to clipboard
-                fallbackShare(shareText);
-            }
-        }
-
-        function fallbackShare(text) {
-            // Try modern clipboard API first
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showNotification('تم نسخ النص للمشاركة! 📋✨', 'success');
-                }).catch(() => {
-                    legacyCopy(text);
-                });
-            } else {
-                legacyCopy(text);
-            }
-        }
-
-        function legacyCopy(text) {
-            // Legacy fallback for older browsers
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.left = '-999999px';
-            textArea.style.top = '-999999px';
-            textArea.style.opacity = '0';
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            try {
-                const successful = document.execCommand('copy');
-                if (successful) {
-                    showNotification('تم نسخ النص للمشاركة! 📋✨', 'success');
-                } else {
-                    showNotification('يرجى نسخ النص يدوياً 📝', 'error');
-                }
-            } catch (err) {
-                console.log('Copy failed:', err);
-                showNotification('يرجى نسخ النص يدوياً 📝', 'error');
-            }
-            
-            document.body.removeChild(textArea);
-        }
-
-        function copyContent() {
-            const title = document.getElementById('contentTitle').textContent;
-            const text = document.getElementById('contentText').textContent;
-            const source = document.getElementById('contentSource').textContent;
-            
-            const copyText = `${title}\n\n${text}\n\n${source}\n\n🌙 من تطبيق "آيات للروح"`;
-            
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(copyText).then(() => {
-                    showNotification('تم نسخ النص بنجاح! 📋', 'success');
-                }).catch(() => {
-                    fallbackCopy(copyText);
-                });
-            } else {
-                fallbackCopy(copyText);
-            }
-        }
-
-        function fallbackCopy(text) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.left = '-999999px';
-            textArea.style.top = '-999999px';
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            try {
-                document.execCommand('copy');
-                showNotification('تم نسخ النص بنجاح! 📋', 'success');
-            } catch (err) {
-                showNotification('حدث خطأ في النسخ 😞', 'error');
-            }
-            
-            document.body.removeChild(textArea);
-        }
-
-        function openQuranKareem() {
-            try {
-                // Open the Quran website in a new window/tab
-                const quranWindow = window.open('https://quran.ksu.edu.sa/m.php#aya=2_1', '_blank');
-                
-                // Check if the window was successfully opened
-                if (quranWindow) {
-                    showNotification('تم فتح المصحف الشريف! 📖✨', 'success');
-                } else {
-                    // If popup was blocked, show alternative message
-                    showNotification('يرجى السماح بفتح النوافذ المنبثقة لفتح المصحف 🔓', 'error');
-                }
-            } catch (error) {
-                console.log('Error opening Quran:', error);
-                showNotification('حدث خطأ في فتح المصحف، يرجى المحاولة مرة أخرى 🔄', 'error');
-            }
-        }
-
-        function openShamela() {
-            try {
-                // Open the Shamela website in a new window/tab
-                const shamelaWindow = window.open('https://shamela.ws/', '_blank');
-                
-                // Check if the window was successfully opened
-                if (shamelaWindow) {
-                    showNotification('تم فتح المكتبة الشاملة! 📚✨', 'success');
-                } else {
-                    // If popup was blocked, show alternative message
-                    showNotification('يرجى السماح بفتح النوافذ المنبثقة لفتح المكتبة 🔓', 'error');
-                }
-            } catch (error) {
-                console.log('Error opening Shamela:', error);
-                showNotification('حدث خطأ في فتح المكتبة، يرجى المحاولة مرة أخرى 🔄', 'error');
-            }
-        }
-
-        function openFatawa() {
-            try {
-                // Open the Fatawa website in a new window/tab
-                const fatawaWindow = window.open('https://www.islamweb.net/ar/fatwa/', '_blank');
-                
-                // Check if the window was successfully opened
-                if (fatawaWindow) {
-                    showNotification('تم فتح موقع الفتاوى الإسلامية! ⚖️✨', 'success');
-                } else {
-                    // If popup was blocked, show alternative message
-                    showNotification('يرجى السماح بفتح النوافذ المنبثقة لفتح الموقع 🔓', 'error');
-                }
-            } catch (error) {
-                console.log('Error opening Fatawa:', error);
-                showNotification('حدث خطأ في فتح الموقع، يرجى المحاولة مرة أخرى 🔄', 'error');
-            }
-        }
-
-        function showNotification(message, type) {
-            // Remove existing notification
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-            
-            // Create notification
-            const notification = document.createElement('div');
-            notification.className = `notification fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 rounded-lg font-bold text-white shadow-lg transition-all duration-300 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
-            notification.textContent = message;
-            notification.style.opacity = '0';
-            notification.style.transform = 'translate(-50%, -20px)';
-            
-            document.body.appendChild(notification);
-            
-            // Show notification
-            setTimeout(() => {
-                notification.style.opacity = '1';
-                notification.style.transform = 'translate(-50%, 0)';
-            }, 100);
-            
-            // Hide notification after 3 seconds
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transform = 'translate(-50%, -20px)';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
-        }
+        let currentContent = [];
+        let currentIndex = 0;
+        let currentCategory = '';
 
         // Sidebar functionality
         function toggleSidebar() {
@@ -2151,29 +1817,17 @@
             const overlay = document.getElementById('sidebarOverlay');
             const menuIcon = document.getElementById('menuIcon');
             
-            const isOpen = !sidebar.classList.contains('translate-x-full');
-            
-            if (isOpen) {
-                closeSidebar();
+            if (sidebar.classList.contains('translate-x-full')) {
+                // Open sidebar
+                sidebar.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                menuIcon.style.transform = 'rotate(90deg)';
             } else {
-                openSidebar();
+                // Close sidebar
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                menuIcon.style.transform = 'rotate(0deg)';
             }
-        }
-
-        function openSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            const menuIcon = document.getElementById('menuIcon');
-            
-            sidebar.classList.remove('translate-x-full');
-            overlay.classList.remove('hidden');
-            
-            // Change menu icon to X
-            menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-            menuIcon.classList.add('rotate-90');
-            
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
         }
 
         function closeSidebar() {
@@ -2183,88 +1837,487 @@
             
             sidebar.classList.add('translate-x-full');
             overlay.classList.add('hidden');
-            
-            // Change X back to menu icon
-            menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
-            menuIcon.classList.remove('rotate-90');
-            
-            // Restore body scroll
-            document.body.style.overflow = 'auto';
+            menuIcon.style.transform = 'rotate(0deg)';
         }
 
         function showTabFromSidebar(tabName) {
-            // Close sidebar first
             closeSidebar();
-            
-            // Wait for sidebar to close, then show tab
-            setTimeout(() => {
-                showTab(tabName);
-                
-                // Scroll to tabs section
-                const tabsSection = document.querySelector('.container');
-                if (tabsSection) {
-                    tabsSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 300);
+            showTab(tabName);
         }
 
-        // Initialize sidebar functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            setupSidebar();
-        });
+        // Event listeners for sidebar
+        document.getElementById('menuToggle').addEventListener('click', toggleSidebar);
+        document.getElementById('closeSidebar').addEventListener('click', closeSidebar);
+        document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
 
-        // Also initialize immediately in case DOM is already loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', setupSidebar);
-        } else {
-            setupSidebar();
+        function showTab(tabName) {
+            // Hide welcome message
+            document.getElementById('welcomeMessage').classList.add('hidden');
+            
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+            
+            // Hide content container
+            document.getElementById('contentContainer').classList.add('hidden');
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            const selectedTab = document.getElementById(tabName + 'Tab');
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
         }
 
-        function setupSidebar() {
-            const menuToggle = document.getElementById('menuToggle');
-            const closeSidebarBtn = document.getElementById('closeSidebar');
-            const sidebarOverlay = document.getElementById('sidebarOverlay');
+        function selectMood(mood) {
+            currentContent = verses[mood] || [];
+            currentIndex = 0;
+            currentCategory = mood;
+            showContent();
+        }
+
+        function showDivineMessage() {
+            currentContent = divineMessages;
+            currentIndex = Math.floor(Math.random() * divineMessages.length);
+            currentCategory = 'divine';
+            showContent();
+        }
+
+        function showChosenMessage() {
+            currentContent = chosenMessages;
+            currentIndex = Math.floor(Math.random() * chosenMessages.length);
+            currentCategory = 'chosen';
+            showContent();
+        }
+
+        function showHadithMessage() {
+            currentContent = hadithMessages;
+            currentIndex = Math.floor(Math.random() * hadithMessages.length);
+            currentCategory = 'hadith';
+            showContent();
+        }
+
+        function showWisdomMessage() {
+            currentContent = wisdomMessages;
+            currentIndex = Math.floor(Math.random() * wisdomMessages.length);
+            currentCategory = 'wisdom';
+            showContent();
+        }
+
+        function showQuranInfo() {
+            currentContent = quranInfoMessages;
+            currentIndex = Math.floor(Math.random() * quranInfoMessages.length);
+            currentCategory = 'quran';
+            showContent();
+        }
+
+        function showPrayerCategory(category) {
+            currentContent = prayers[category] || [];
+            currentIndex = 0;
+            currentCategory = category;
+            showContent();
+        }
+
+        function showRandomPrayer() {
+            const allPrayers = [];
+            Object.values(prayers).forEach(categoryPrayers => {
+                allPrayers.push(...categoryPrayers);
+            });
+            currentContent = allPrayers;
+            currentIndex = Math.floor(Math.random() * allPrayers.length);
+            currentCategory = 'random';
+            showContent();
+        }
+
+        function showContent() {
+            if (currentContent.length === 0) return;
             
-            // Menu toggle button - direct onclick
-            if (menuToggle) {
-                menuToggle.onclick = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleSidebar();
-                };
+            const content = currentContent[currentIndex];
+            
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+            
+            // Show content container
+            const container = document.getElementById('contentContainer');
+            container.classList.remove('hidden');
+            
+            // Set content
+            document.getElementById('contentIcon').textContent = getIconForCategory(currentCategory);
+            document.getElementById('contentTitle').textContent = content.title || getTitleForCategory(currentCategory);
+            document.getElementById('contentText').textContent = content.text;
+            document.getElementById('contentSource').textContent = content.source;
+            document.getElementById('contentAdvice').textContent = content.advice;
+            
+            // Show/hide tafseer section
+            const tafseerSection = document.getElementById('tafseerSection');
+            const tafseerText = document.getElementById('contentTafseer');
+            
+            if (content.tafseer) {
+                tafseerText.textContent = content.tafseer;
+                tafseerSection.classList.remove('hidden');
+            } else {
+                tafseerSection.classList.add('hidden');
             }
             
-            // Close sidebar button - direct onclick
-            if (closeSidebarBtn) {
-                closeSidebarBtn.onclick = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    closeSidebar();
-                };
+            // Update navigation
+            document.getElementById('currentNumber').textContent = currentIndex + 1;
+            document.getElementById('totalNumber').textContent = currentContent.length;
+            
+            // Show/hide navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (currentContent.length > 1) {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
             }
             
-            // Close sidebar when clicking overlay - direct onclick
-            if (sidebarOverlay) {
-                sidebarOverlay.onclick = function(e) {
-                    e.preventDefault();
-                    closeSidebar();
-                };
-            }
-            
-            // Close sidebar on escape key
-            document.onkeydown = function(e) {
-                if (e.key === 'Escape' || e.keyCode === 27) {
-                    const sidebar = document.getElementById('sidebar');
-                    if (sidebar && !sidebar.classList.contains('translate-x-full')) {
-                        closeSidebar();
-                    }
-                }
+            // Add animation
+            const verseCard = document.querySelector('.verse-card');
+            verseCard.classList.add('show');
+        }
+
+        function getIconForCategory(category) {
+            const icons = {
+                sadness: '😢', confusion: '🤔', anxiety: '😰', gratitude: '🙏',
+                joy: '😊', hope: '✨', guidance: '🧭', patience: '⏳',
+                forgiveness: '💚', fear: '😨', loneliness: '😔', anger: '😡',
+                stress: '😫', love: '❤️', peace: '🕊️', divine: '📜',
+                chosen: '⭐', hadith: '📚', wisdom: '🌟', quran: '📖',
+                travel: '✈️', morning: '🌅', evening: '🌙', ruqyah: '📿',
+                general: '🤲', random: '🎲', depression: '😞', jealousy: '😒',
+                guilt: '😔', weakness: '😪', betrayal: '💔', failure: '😓',
+                injustice: '⚖️', poverty: '💸', illness: '🤒', death: '🥀',
+                marriage: '💍', children: '👶', work: '💼', study: '📚',
+                success: '🏆'
             };
+            return icons[category] || '📖';
         }
 
+        function getTitleForCategory(category) {
+            const titles = {
+                sadness: 'آية للحزن', confusion: 'آية للحيرة', anxiety: 'آية للقلق',
+                gratitude: 'آية للشكر', joy: 'آية للفرح', hope: 'آية للأمل',
+                guidance: 'آية للهداية', patience: 'آية للصبر', forgiveness: 'آية للاستغفار',
+                fear: 'آية للخوف', loneliness: 'آية للوحدة', anger: 'آية للغضب',
+                stress: 'آية للضغط', love: 'آية للحب', peace: 'آية للسكينة',
+                divine: 'رسالة ربانية', chosen: 'لماذا اختارك الله', hadith: 'حديث شريف',
+                wisdom: 'حكمة إسلامية', quran: 'معلومة قرآنية', travel: 'دعاء السفر',
+                morning: 'ذكر الصباح', evening: 'ذكر المساء', ruqyah: 'رقية شرعية',
+                general: 'دعاء عام', random: 'دعاء مختار', depression: 'آية للاكتئاب',
+                jealousy: 'آية للحسد والغيرة', guilt: 'آية للشعور بالذنب', weakness: 'آية للضعف',
+                betrayal: 'آية للخيانة', failure: 'آية للفشل', injustice: 'آية للظلم',
+                poverty: 'آية لضيق الرزق', illness: 'آية للمرض', death: 'آية لفقدان عزيز',
+                marriage: 'آية للزواج', children: 'آية للأطفال', work: 'آية للعمل',
+                study: 'آية للدراسة', success: 'آية للنجاح'
+            };
+            return titles[category] || 'محتوى إسلامي';
+        }
 
+        function showPreviousContent() {
+            if (currentContent.length > 1) {
+                currentIndex = (currentIndex - 1 + currentContent.length) % currentContent.length;
+                showContent();
+            }
+        }
 
+        function showNextContent() {
+            if (currentContent.length > 1) {
+                currentIndex = (currentIndex + 1) % currentContent.length;
+                showContent();
+            }
+        }
 
+        function getNewContent() {
+            if (currentContent.length > 1) {
+                let newIndex;
+                do {
+                    newIndex = Math.floor(Math.random() * currentContent.length);
+                } while (newIndex === currentIndex && currentContent.length > 1);
+                currentIndex = newIndex;
+                showContent();
+            }
+        }
+
+        function shareContent() {
+            const content = currentContent[currentIndex];
+            const shareText = `${content.text}\n\n${content.source}\n\n${content.advice}\n\nمن تطبيق آيات للروح 🌙`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'آيات للروح',
+                    text: shareText
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                copyToClipboard(shareText);
+                alert('تم نسخ المحتوى! يمكنك مشاركته الآن 📤');
+            }
+        }
+
+        function copyContent() {
+            const content = currentContent[currentIndex];
+            const copyText = `${content.text}\n\n${content.source}\n\n${content.advice}`;
+            copyToClipboard(copyText);
+            alert('تم نسخ المحتوى بنجاح! 📋');
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text);
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function openQuranKareem() {
+            window.open('https://quran.ksu.edu.sa/', '_blank');
+        }
+
+        function openShamela() {
+            window.open('https://shamela.ws/', '_blank');
+        }
+
+        function openFatawa() {
+            window.open('https://www.islamweb.net/ar/fatwa/', '_blank');
+        }
+
+        function openKhatma() {
+            window.open('https://5etme.com/new', '_blank');
+        }
+
+        // Qibla and Prayer Times Functions
+        function findQibla() {
+            if (!navigator.geolocation) {
+                alert('المتصفح لا يدعم تحديد الموقع الجغرافي');
+                return;
+            }
+
+            document.getElementById('qiblaDirection').textContent = 'جاري تحديد الموقع...';
+            
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    
+                    // Kaaba coordinates
+                    const kaabaLat = 21.4225;
+                    const kaabaLng = 39.8262;
+                    
+                    // Calculate qibla direction
+                    const qiblaAngle = calculateQiblaDirection(lat, lng, kaabaLat, kaabaLng);
+                    const distance = calculateDistance(lat, lng, kaabaLat, kaabaLng);
+                    
+                    // Update UI
+                    document.getElementById('qiblaArrow').style.transform = `rotate(${qiblaAngle}deg)`;
+                    document.getElementById('qiblaDirection').textContent = `اتجاه القبلة: ${Math.round(qiblaAngle)}°`;
+                    document.getElementById('qiblaDistance').textContent = `المسافة إلى الكعبة: ${Math.round(distance)} كم`;
+                },
+                function(error) {
+                    let errorMessage = 'حدث خطأ في تحديد الموقع';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = 'تم رفض إذن الوصول للموقع';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = 'الموقع غير متاح';
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = 'انتهت مهلة تحديد الموقع';
+                            break;
+                    }
+                    document.getElementById('qiblaDirection').textContent = errorMessage;
+                }
+            );
+        }
+
+        function calculateQiblaDirection(lat1, lng1, lat2, lng2) {
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+            const lat1Rad = lat1 * Math.PI / 180;
+            const lat2Rad = lat2 * Math.PI / 180;
+            
+            const y = Math.sin(dLng) * Math.cos(lat2Rad);
+            const x = Math.cos(lat1Rad) * Math.sin(lat2Rad) - Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(dLng);
+            
+            let bearing = Math.atan2(y, x) * 180 / Math.PI;
+            return (bearing + 360) % 360;
+        }
+
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+            const R = 6371; // Earth's radius in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLng = (lng2 - lng1) * Math.PI / 180;
+            
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLng/2) * Math.sin(dLng/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            
+            return R * c;
+        }
+
+        function updatePrayerTimes() {
+            // Cairo coordinates
+            const lat = 30.0444;
+            const lng = 31.2357;
+            
+            const today = new Date();
+            const dateStr = today.toISOString().split('T')[0];
+            
+            // Update current date
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                calendar: 'islamic-umalqura'
+            };
+            
+            try {
+                const islamicDate = today.toLocaleDateString('ar-SA-u-ca-islamic', options);
+                const gregorianDate = today.toLocaleDateString('ar-EG', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                document.getElementById('currentDate').textContent = `${gregorianDate} - ${islamicDate}`;
+            } catch (e) {
+                document.getElementById('currentDate').textContent = today.toLocaleDateString('ar-EG', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+            
+            // Calculate prayer times using a simple algorithm
+            const prayerTimes = calculatePrayerTimes(lat, lng, today);
+            
+            // Update prayer times in UI
+            document.getElementById('fajrTime').textContent = prayerTimes.fajr;
+            document.getElementById('sunriseTime').textContent = prayerTimes.sunrise;
+            document.getElementById('dhuhrTime').textContent = prayerTimes.dhuhr;
+            document.getElementById('asrTime').textContent = prayerTimes.asr;
+            document.getElementById('maghribTime').textContent = prayerTimes.maghrib;
+            document.getElementById('ishaTime').textContent = prayerTimes.isha;
+            
+            // Update next prayer
+            updateNextPrayer(prayerTimes);
+        }
+
+        function calculatePrayerTimes(lat, lng, date) {
+            // Simplified prayer time calculation for Cairo, Egypt
+            // These are approximate times and may need adjustment
+            const times = {
+                fajr: '04:30',
+                sunrise: '06:00',
+                dhuhr: '12:00',
+                asr: '15:30',
+                maghrib: '18:00',
+                isha: '19:30'
+            };
+            
+            // Adjust times based on season (very simplified)
+            const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+            const seasonAdjustment = Math.sin((dayOfYear / 365) * 2 * Math.PI) * 60; // minutes
+            
+            // Apply seasonal adjustment (simplified)
+            const adjustedTimes = {};
+            Object.keys(times).forEach(prayer => {
+                const [hours, minutes] = times[prayer].split(':').map(Number);
+                let totalMinutes = hours * 60 + minutes;
+                
+                if (prayer === 'fajr' || prayer === 'sunrise') {
+                    totalMinutes += seasonAdjustment * 0.5;
+                } else if (prayer === 'maghrib' || prayer === 'isha') {
+                    totalMinutes -= seasonAdjustment * 0.5;
+                }
+                
+                const newHours = Math.floor(totalMinutes / 60);
+                const newMinutes = Math.round(totalMinutes % 60);
+                adjustedTimes[prayer] = `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`;
+            });
+            
+            return adjustedTimes;
+        }
+
+        function updateNextPrayer(prayerTimes) {
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            
+            const prayers = [
+                { name: 'الفجر', time: prayerTimes.fajr, key: 'fajr' },
+                { name: 'الشروق', time: prayerTimes.sunrise, key: 'sunrise' },
+                { name: 'الظهر', time: prayerTimes.dhuhr, key: 'dhuhr' },
+                { name: 'العصر', time: prayerTimes.asr, key: 'asr' },
+                { name: 'المغرب', time: prayerTimes.maghrib, key: 'maghrib' },
+                { name: 'العشاء', time: prayerTimes.isha, key: 'isha' }
+            ];
+            
+            let nextPrayer = null;
+            
+            for (let prayer of prayers) {
+                const [hours, minutes] = prayer.time.split(':').map(Number);
+                const prayerTime = hours * 60 + minutes;
+                
+                if (prayerTime > currentTime) {
+                    nextPrayer = prayer;
+                    break;
+                }
+            }
+            
+            // If no prayer found for today, next prayer is Fajr tomorrow
+            if (!nextPrayer) {
+                nextPrayer = prayers[0];
+            }
+            
+            // Calculate time remaining
+            const [hours, minutes] = nextPrayer.time.split(':').map(Number);
+            let prayerTime = hours * 60 + minutes;
+            
+            if (prayerTime <= currentTime) {
+                prayerTime += 24 * 60; // Add 24 hours for tomorrow
+            }
+            
+            const timeRemaining = prayerTime - currentTime;
+            const hoursRemaining = Math.floor(timeRemaining / 60);
+            const minutesRemaining = timeRemaining % 60;
+            
+            // Update UI
+            document.getElementById('nextPrayerName').textContent = nextPrayer.name;
+            document.getElementById('nextPrayerTime').textContent = nextPrayer.time;
+            document.getElementById('timeRemaining').textContent = 
+                `باقي ${hoursRemaining} ساعة و ${minutesRemaining} دقيقة`;
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show welcome message by default
+            document.getElementById('welcomeMessage').classList.remove('hidden');
+            
+            // Update prayer times on load
+            updatePrayerTimes();
+            
+            // Update prayer times every minute
+            setInterval(updatePrayerTimes, 60000);
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c5649d43a5e5bf',t:'MTc1NDcyMzAwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e0ada845a253a8',t:'MTc1NTAwOTEwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
